@@ -198,7 +198,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       <div className="fixed left-5 bottom-5 z-30 group cursor-pointer">
         <div className="relative w-24 h-24 rounded-full overflow-hidden border border-white/20 bg-black/40 backdrop-blur-md hover:scale-105 transition duration-300">
           <img
-            src="/images/moongchi_stickers.png"
+            src="/images/teacher-logo.png"
             alt="Moongchi"
             className="w-full h-full object-cover"
           />

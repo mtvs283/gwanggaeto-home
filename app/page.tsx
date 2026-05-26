@@ -44,9 +44,9 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       {/* Hero Background */}
       <div className="absolute inset-0 overflow-hidden">
         <img
-          src="/images/main.png"
+          src="/images/main1.png"
           alt="Gwanggaeto and Sejong"
-          className="absolute inset-0 w-full h-full object-cover object-center scale-95"
+          className="absolute inset-0 w-full h-full object-cover object-center scale-100"
         />
 
         <div className="absolute inset-0 bg-black/55" />

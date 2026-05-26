@@ -46,7 +46,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
         <img
           src="/images/main.png"
           alt="Gwanggaeto and Sejong"
-          className="absolute inset-0 w-full h-full object-cover object-center scale-100"
+          className="absolute inset-0 w-full h-full object-cover object-center scale-90"
         />
 
         <div className="absolute inset-0 bg-black/55" />

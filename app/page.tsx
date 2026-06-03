@@ -209,12 +209,12 @@ export default function GwanggaetoCinematicLobbyHomepage() {
           <img
             src="/images/gold_frame_background.png"
             alt="Gold frame background"
-            className="h-full w-full object-contain object-center p-4 md:p-8"
+            className="h-full w-full scale-110 object-contain object-center"
           />
           <div className="absolute inset-0 bg-black/45" />
         </div>
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto">
+        <div className="relative z-10 mx-auto w-full max-w-6xl">
           <div className="absolute right-0 top-0 z-20">
             <HomeLink />
           </div>
@@ -228,22 +228,22 @@ export default function GwanggaetoCinematicLobbyHomepage() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 [@media(max-height:800px)]:gap-3">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 [@media(max-height:800px)]:gap-2.5">
             {worlds.map((world, index) => (
               <a
                 key={index}
                 href={world.href}
-                className={`group relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-gradient-to-b ${world.color} backdrop-blur-xl p-5 min-h-[190px] hover:-translate-y-1 hover:border-yellow-300/50 transition duration-500 cursor-pointer [@media(max-height:800px)]:min-h-[130px] [@media(max-height:800px)]:p-4`}
+                className={`group relative overflow-hidden rounded-[1.25rem] border border-white/10 bg-gradient-to-b ${world.color} backdrop-blur-xl p-4 min-h-[170px] hover:-translate-y-1 hover:border-yellow-300/50 transition duration-500 cursor-pointer [@media(max-height:800px)]:min-h-[118px] [@media(max-height:800px)]:p-3.5`}
               >
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-[radial-gradient(circle_at_top,rgba(255,215,0,0.12),transparent_70%)] transition duration-500" />
 
                 <div className="relative z-10 flex flex-col justify-between h-full">
                   <div>
-                    <div className="text-sm uppercase tracking-[0.25em] text-yellow-200 mb-3 [@media(max-height:800px)]:mb-2 [@media(max-height:800px)]:text-xs">
+                    <div className="text-sm uppercase tracking-[0.25em] text-yellow-200 mb-2 [@media(max-height:800px)]:mb-1.5 [@media(max-height:800px)]:text-xs">
                       {world.sub}
                     </div>
 
-                    <h2 className="text-2xl md:text-3xl font-black leading-tight mb-3 [@media(max-height:800px)]:mb-2 [@media(max-height:800px)]:text-2xl">
+                    <h2 className="text-2xl md:text-[1.7rem] font-black leading-tight mb-2 [@media(max-height:800px)]:mb-1.5 [@media(max-height:800px)]:text-2xl">
                       {world.title}
                     </h2>
 
@@ -262,7 +262,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
                     )}
                   </div>
 
-                  <div className="flex items-center justify-between pt-5 [@media(max-height:800px)]:pt-3">
+                  <div className="flex items-center justify-between pt-4 [@media(max-height:800px)]:pt-2.5">
                     <span className="text-yellow-300 font-semibold [@media(max-height:800px)]:text-sm">
                       Enter
                     </span>

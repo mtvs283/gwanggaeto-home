@@ -154,7 +154,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       <div className="absolute bottom-0 right-0 w-[35rem] h-[35rem] bg-amber-300/10 blur-[140px] rounded-full" />
 
       {/* Navigation */}
-      <header className="relative z-20 flex items-center justify-between px-6 md:px-10 py-6">
+      <header className="absolute left-0 right-0 top-0 z-20 flex items-center justify-between px-6 md:px-10 py-6">
         <a href="#top" className="block">
           <div className="text-stone-200 text-xs tracking-[0.4em] uppercase">
             Onmaeum Korean
@@ -173,7 +173,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       </header>
 
       {/* Main Lobby */}
-      <main id="top" className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 pt-32 pb-16 text-center">
+      <main id="top" className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-10 text-center">
         <div className="space-y-6 max-w-4xl backdrop-blur-[2px]">
           <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-white/20 bg-black/20 backdrop-blur-md text-sm tracking-[0.25em] uppercase text-stone-200">
             Interactive Korean Learning
@@ -204,36 +204,36 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       </main>
 
       {/* Learning Gateways */}
-      <section id="gateways" className="relative z-10 min-h-screen border-t border-white/10 bg-black px-6 py-24 flex items-center scroll-mt-10">
+      <section id="gateways" className="relative z-10 min-h-screen border-t border-white/10 bg-black px-6 py-10 flex items-center scroll-mt-10">
         <div className="absolute inset-0 opacity-70">
           <img
             src="/images/gold_frame_background.png"
             alt="Gold frame background"
-            className="w-full h-full object-cover object-center"
+            className="h-full w-full object-contain object-center p-4 md:p-8"
           />
           <div className="absolute inset-0 bg-black/45" />
         </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto">
-          <div className="mb-8 flex justify-end">
+          <div className="mb-4 flex justify-end">
             <HomeLink />
           </div>
 
-          <div className="text-center mb-14">
-            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-yellow-300/30 bg-black/30 backdrop-blur-md text-sm tracking-[0.25em] uppercase text-yellow-200 mb-5">
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-yellow-300/30 bg-black/30 backdrop-blur-md text-xs tracking-[0.25em] uppercase text-yellow-200 mb-4">
               Learning Gateways
             </div>
-            <h2 className="text-5xl md:text-7xl font-black text-white drop-shadow-2xl">
+            <h2 className="text-4xl md:text-5xl font-black text-white drop-shadow-2xl">
               Select Your Korean World
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {worlds.map((world, index) => (
               <a
                 key={index}
                 href={world.href}
-                className={`group relative overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-b ${world.color} backdrop-blur-xl p-8 min-h-[280px] hover:-translate-y-2 hover:border-yellow-300/50 transition duration-500 cursor-pointer`}
+                className={`group relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-gradient-to-b ${world.color} backdrop-blur-xl p-5 min-h-[190px] hover:-translate-y-1 hover:border-yellow-300/50 transition duration-500 cursor-pointer`}
               >
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-[radial-gradient(circle_at_top,rgba(255,215,0,0.12),transparent_70%)] transition duration-500" />
 
@@ -243,7 +243,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
                       {world.sub}
                     </div>
 
-                    <h2 className="text-4xl font-black leading-tight mb-4">
+                    <h2 className="text-2xl md:text-3xl font-black leading-tight mb-3">
                       {world.title}
                     </h2>
 
@@ -256,13 +256,13 @@ export default function GwanggaetoCinematicLobbyHomepage() {
                     </p>
 
                     {world.required && (
-                      <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-yellow-400/30 bg-yellow-500/10 px-4 py-2 text-xs tracking-[0.2em] uppercase text-yellow-300">
+                      <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-yellow-400/30 bg-yellow-500/10 px-4 py-2 text-xs tracking-[0.2em] uppercase text-yellow-300">
                         Required First Step
                       </div>
                     )}
                   </div>
 
-                  <div className="flex items-center justify-between pt-10">
+                  <div className="flex items-center justify-between pt-5">
                     <span className="text-yellow-300 font-semibold">
                       Enter
                     </span>
@@ -366,9 +366,9 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       ))}
 
       {/* Learning Plaza Section */}
-      <section id="plaza" className="relative z-10 border-t border-purple-300/10 bg-black px-6 py-28 scroll-mt-10">
-        <div className="relative max-w-7xl mx-auto rounded-[2.5rem] border border-purple-300/20 bg-purple-950/20 backdrop-blur-xl p-8 md:p-12 overflow-hidden">
-          <div className="relative z-20 mb-8 flex justify-end">
+      <section id="plaza" className="relative z-10 min-h-screen border-t border-purple-300/10 bg-black px-6 py-12 flex items-center scroll-mt-10">
+        <div className="relative max-w-7xl mx-auto rounded-[2rem] border border-purple-300/20 bg-purple-950/20 backdrop-blur-xl p-6 md:p-8 overflow-hidden">
+          <div className="relative z-20 mb-5 flex justify-end">
             <HomeLink />
           </div>
 
@@ -380,7 +380,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
             <div className="text-purple-200 text-sm tracking-[0.3em] uppercase mb-4">
               Learning Plaza 학습 광장
             </div>
-            <h2 className="text-5xl md:text-7xl font-black mb-6">
+            <h2 className="text-4xl md:text-5xl font-black mb-4">
               Materials, Community, and Live Classes
             </h2>
             <p className="text-xl text-stone-200 leading-relaxed mb-4">
@@ -393,12 +393,12 @@ export default function GwanggaetoCinematicLobbyHomepage() {
             </p>
           </div>
 
-          <div className="relative z-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
+          <div className="relative z-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
             {plazaButtons.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="rounded-2xl border border-purple-300/20 bg-white/5 hover:bg-purple-300 hover:text-black transition duration-300 p-6 min-h-36 flex flex-col justify-between"
+                className="rounded-2xl border border-purple-300/20 bg-white/5 hover:bg-purple-300 hover:text-black transition duration-300 p-5 min-h-28 flex flex-col justify-between"
               >
                 <span className="text-xl font-bold">{item.label}</span>
                 <span className="text-sm opacity-80">{item.ko}</span>

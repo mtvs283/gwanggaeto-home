@@ -4,49 +4,121 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       title: "Hangeul",
       sub: "The Core Gateway",
       desc: "All learning begins with Korean sounds and letters.",
+      ko: "한국어 소리와 글자부터 시작하세요.",
       color: "from-yellow-950/90 to-black/90",
+      href: "#hangeul",
       required: true,
     },
     {
       title: "Study in Korea",
       sub: "University & Campus Life",
       desc: "Essential Korean for international students.",
+      ko: "대학 생활과 유학 생활에 필요한 한국어를 배웁니다.",
       color: "from-blue-950/80 to-black/80",
+      href: "#study",
     },
     {
-      title: "EPS Korea",
+      title: "Work Korean",
       sub: "Work & Factory Korean",
       desc: "Korean for jobs, factories, and daily work life.",
+      ko: "일터와 생활 현장에서 바로 쓰는 한국어를 배웁니다.",
       color: "from-red-950/80 to-black/80",
+      href: "#work",
     },
     {
       title: "Daily Korean",
       sub: "Real Life Conversation",
       desc: "Practice the Korean used in everyday situations.",
+      ko: "생활 속 실제 대화를 상황별로 연습합니다.",
       color: "from-zinc-900/90 to-black/90",
+      href: "#daily",
     },
     {
       title: "Travel Korean",
       sub: "Korea Survival Guide",
       desc: "Taxi, restaurants, shopping, and transportation.",
+      ko: "택시, 식당, 쇼핑, 교통 표현을 익힙니다.",
       color: "from-emerald-950/80 to-black/80",
+      href: "#travel",
     },
     {
-      title: "TOPIK",
-      sub: "Exam & Challenge",
-      desc: "Train for the Korean proficiency test.",
+      title: "Learning Plaza",
+      sub: "Resources & Community",
+      desc: "Class materials, notices, study guides, and live classroom links.",
+      ko: "학습 자료와 온라인 수업 입구를 한곳에서 확인하세요.",
       color: "from-purple-950/80 to-black/80",
+      href: "#plaza",
+    },
+  ]
+
+  const hangeulButtons = [
+    { label: "Vowels App", ko: "모음 배우기", href: "/hangeul/vowels" },
+    { label: "Consonants App", ko: "자음 배우기", href: "/hangeul/consonants" },
+    { label: "Syllable App", ko: "실라블 배우기", href: "/hangeul/syllables" },
+    { label: "Final Consonants App", ko: "받침 배우기", href: "/hangeul/final-consonants" },
+    { label: "Hangeul Class", ko: "한글 기초반 신청", href: "/apply/hangeul" },
+  ]
+
+  const plazaButtons = [
+    { label: "Materials", ko: "자료실", href: "/materials" },
+    { label: "Notice", ko: "공지사항", href: "/notice" },
+    { label: "Community Board", ko: "게시판", href: "/community" },
+    { label: "Class Application", ko: "강의 신청", href: "/apply" },
+    { label: "Enter Classroom", ko: "강의실 입장", href: "/classroom" },
+    { label: "Teacher & Institution", ko: "교사·기관 문의", href: "#teachers" },
+  ]
+
+  const learningSections = [
+    {
+      id: "study",
+      eyebrow: "Study in Korea",
+      title: "University & Campus Korean",
+      koTitle: "유학 한국어",
+      desc: "Learn the Korean needed for campus life, school notices, departments, housing, and student services.",
+      koDesc: "대학 생활, 학교 공지, 학과, 기숙사, 학생 지원 서비스에 필요한 한국어를 배웁니다.",
+      buttons: ["Campus Life", "School Notices", "Presentation Korean", "Study Guides"],
+      color: "border-blue-300/20 bg-blue-950/20",
+    },
+    {
+      id: "work",
+      eyebrow: "Work Korean",
+      title: "Korean for Work and Daily Jobs",
+      koTitle: "일터 한국어",
+      desc: "Practice workplace Korean for factories, schedules, safety, instructions, and real communication at work.",
+      koDesc: "공장, 일정, 안전, 업무 지시, 직장 생활 대화에 필요한 한국어를 연습합니다.",
+      buttons: ["Factory Korean", "Safety Korean", "Work Dialogues", "EPS Practice"],
+      color: "border-red-300/20 bg-red-950/20",
+    },
+    {
+      id: "daily",
+      eyebrow: "Daily Korean",
+      title: "Real Life Conversation Practice",
+      koTitle: "생활 한국어",
+      desc: "Practice Korean for greetings, shopping, hospitals, banks, phone calls, and everyday problem solving.",
+      koDesc: "인사, 쇼핑, 병원, 은행, 전화, 일상 문제 해결 표현을 상황별로 배웁니다.",
+      buttons: ["Conversation", "Role Play", "Listening", "Word Cards"],
+      color: "border-stone-300/20 bg-stone-900/40",
+    },
+    {
+      id: "travel",
+      eyebrow: "Travel Korean",
+      title: "Korea Survival Guide",
+      koTitle: "여행 한국어",
+      desc: "Learn the Korean you need for taxis, restaurants, shopping, directions, transportation, and travel emergencies.",
+      koDesc: "택시, 식당, 쇼핑, 길 찾기, 교통, 여행 중 긴급 상황 표현을 배웁니다.",
+      buttons: ["Taxi", "Restaurant", "Shopping", "Transportation"],
+      color: "border-emerald-300/20 bg-emerald-950/20",
     },
   ]
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-black text-white">
+    <div className="relative min-h-screen overflow-hidden bg-black text-white scroll-smooth">
       {/* Hero Background */}
       <div className="absolute inset-0 overflow-hidden">
         <img
           src="/images/main.png"
           alt="Gwanggaeto and Sejong"
-          className="absolute inset-0 w-full h-full object-cover object-center scale-100"
+          className="absolute inset-0 w-full h-full object-cover object-center scale-110"
         />
 
         <div className="absolute inset-0 bg-black/55" />
@@ -72,14 +144,14 @@ export default function GwanggaetoCinematicLobbyHomepage() {
 
       {/* Navigation */}
       <header className="relative z-20 flex items-center justify-between px-6 md:px-10 py-6">
-        <div>
+        <a href="#top" className="block">
           <div className="text-stone-200 text-xs tracking-[0.4em] uppercase">
             Onmaeum Korean
           </div>
           <div className="text-3xl md:text-5xl font-black tracking-[0.2em] text-white">
             GWANGGAETO
           </div>
-        </div>
+        </a>
 
         <div className="flex items-center gap-3 text-sm">
           <button className="px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 transition">KR</button>
@@ -90,7 +162,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       </header>
 
       {/* Main Lobby */}
-      <main className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 pt-32 pb-16 text-center">
+      <main id="top" className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 pt-32 pb-16 text-center">
         <div className="space-y-6 max-w-4xl backdrop-blur-[2px]">
           <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-white/20 bg-black/20 backdrop-blur-md text-sm tracking-[0.25em] uppercase text-stone-200">
             Interactive Korean Learning
@@ -109,20 +181,19 @@ export default function GwanggaetoCinematicLobbyHomepage() {
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-4 relative">
             <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-40 h-40 bg-yellow-300/10 blur-3xl rounded-full" />
-            <button className="px-10 py-4 rounded-2xl bg-yellow-400 hover:bg-yellow-300 text-black font-bold text-lg shadow-2xl shadow-yellow-500/20 transition duration-300">
+            <a href="#gateways" className="px-10 py-4 rounded-2xl bg-yellow-400 hover:bg-yellow-300 text-black font-bold text-lg shadow-2xl shadow-yellow-500/20 transition duration-300">
               Enter the World
-            </button>
+            </a>
 
-            <button className="px-10 py-4 rounded-2xl border border-white/30 bg-black/20 backdrop-blur-md hover:bg-white/10 transition duration-300 text-lg">
-              Watch Demo
-            </button>
+            <a href="#hangeul" className="px-10 py-4 rounded-2xl border border-white/30 bg-black/20 backdrop-blur-md hover:bg-white/10 transition duration-300 text-lg">
+              Start Hangeul
+            </a>
           </div>
         </div>
+      </main>
 
-        </main>
-
-      {/* World Selection Page */}
-      <section className="relative z-10 min-h-screen px-6 py-24 flex items-center">
+      {/* Learning Gateways */}
+      <section id="gateways" className="relative z-10 min-h-screen px-6 py-24 flex items-center scroll-mt-10">
         <div className="absolute inset-0 opacity-70">
           <img
             src="/images/gold_frame_background.png"
@@ -135,7 +206,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
         <div className="relative z-10 w-full max-w-7xl mx-auto">
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-yellow-300/30 bg-black/30 backdrop-blur-md text-sm tracking-[0.25em] uppercase text-yellow-200 mb-5">
-              Choose Your Path
+              Learning Gateways
             </div>
             <h2 className="text-5xl md:text-7xl font-black text-white drop-shadow-2xl">
               Select Your Korean World
@@ -143,49 +214,214 @@ export default function GwanggaetoCinematicLobbyHomepage() {
           </div>
 
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {worlds.map((world, index) => (
-            <div
-              key={index}
-              className={`group relative overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-b ${world.color} backdrop-blur-xl p-8 min-h-[260px] hover:-translate-y-2 hover:border-yellow-300/50 transition duration-500 cursor-pointer`}
-            >
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-[radial-gradient(circle_at_top,rgba(255,215,0,0.12),transparent_70%)] transition duration-500" />
+            {worlds.map((world, index) => (
+              <a
+                key={index}
+                href={world.href}
+                className={`group relative overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-b ${world.color} backdrop-blur-xl p-8 min-h-[280px] hover:-translate-y-2 hover:border-yellow-300/50 transition duration-500 cursor-pointer`}
+              >
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-[radial-gradient(circle_at_top,rgba(255,215,0,0.12),transparent_70%)] transition duration-500" />
 
-              <div className="relative z-10 flex flex-col justify-between h-full">
-                <div>
-                  <div className="text-sm uppercase tracking-[0.25em] text-yellow-200 mb-3">
-                    {world.sub}
-                  </div>
-
-                  <h2 className="text-4xl font-black leading-tight mb-4">
-                    {world.title}
-                  </h2>
-
-                  <p className="text-stone-300 text-sm leading-relaxed">
-                    {world.desc}
-                  </p>
-
-                  {world.required && (
-                    <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-yellow-400/30 bg-yellow-500/10 px-4 py-2 text-xs tracking-[0.2em] uppercase text-yellow-300">
-                      Required First Step
+                <div className="relative z-10 flex flex-col justify-between h-full">
+                  <div>
+                    <div className="text-sm uppercase tracking-[0.25em] text-yellow-200 mb-3">
+                      {world.sub}
                     </div>
-                  )}
-                </div>
 
-                <div className="flex items-center justify-between pt-10">
-                  <span className="text-yellow-300 font-semibold">
-                    Enter
-                  </span>
+                    <h2 className="text-4xl font-black leading-tight mb-4">
+                      {world.title}
+                    </h2>
 
-                  <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-yellow-300 group-hover:text-black transition duration-300">
-                    →
+                    <p className="text-stone-300 text-sm leading-relaxed">
+                      {world.desc}
+                    </p>
+
+                    <p className="mt-3 text-stone-200 text-sm leading-relaxed">
+                      {world.ko}
+                    </p>
+
+                    {world.required && (
+                      <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-yellow-400/30 bg-yellow-500/10 px-4 py-2 text-xs tracking-[0.2em] uppercase text-yellow-300">
+                        Required First Step
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="flex items-center justify-between pt-10">
+                    <span className="text-yellow-300 font-semibold">
+                      Enter
+                    </span>
+
+                    <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-yellow-300 group-hover:text-black transition duration-300">
+                      →
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          ))}
-        </div>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
+
+      {/* Hangeul Section */}
+      <section id="hangeul" className="relative z-10 px-6 py-28 scroll-mt-10">
+        <div className="relative max-w-7xl mx-auto rounded-[2.5rem] border border-yellow-300/20 bg-black/60 backdrop-blur-xl p-8 md:p-12 overflow-hidden">
+          <div className="absolute right-8 top-8 text-[10rem] md:text-[16rem] font-black text-yellow-300/5 leading-none pointer-events-none">
+            한글
+          </div>
+
+          <div className="relative z-10 max-w-3xl">
+            <div className="text-yellow-200 text-sm tracking-[0.3em] uppercase mb-4">
+              Hangeul 한글 배우기
+            </div>
+            <h2 className="text-5xl md:text-7xl font-black mb-6">
+              Start with Korean sounds and letters.
+            </h2>
+            <p className="text-xl text-stone-200 leading-relaxed mb-4">
+              한국어 소리와 글자부터 시작하세요.
+            </p>
+            <p className="text-stone-300 leading-relaxed">
+              Learn Korean letters through vowels, consonants, syllables, final consonants, and word cards.
+              <br />
+              모음, 자음, 실라블, 받침, 단어카드를 통해 한글의 기본 구조를 익힙니다.
+            </p>
+          </div>
+
+          <div className="relative z-10 grid sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-10">
+            {hangeulButtons.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="rounded-2xl border border-yellow-300/20 bg-yellow-300/10 hover:bg-yellow-300 hover:text-black transition duration-300 p-5 min-h-32 flex flex-col justify-between"
+              >
+                <span className="text-lg font-bold">{item.label}</span>
+                <span className="text-sm opacity-80">{item.ko}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Main Learning Sections */}
+      {learningSections.map((section) => (
+        <section key={section.id} id={section.id} className="relative z-10 px-6 py-16 scroll-mt-10">
+          <div className={`max-w-7xl mx-auto rounded-[2.5rem] border ${section.color} backdrop-blur-xl p-8 md:p-12`}>
+            <div className="grid lg:grid-cols-[1fr_1.2fr] gap-10 items-center">
+              <div>
+                <div className="text-yellow-200 text-sm tracking-[0.3em] uppercase mb-4">
+                  {section.eyebrow}
+                </div>
+                <h2 className="text-4xl md:text-6xl font-black mb-4">
+                  {section.title}
+                </h2>
+                <div className="text-2xl text-yellow-200 font-bold mb-6">
+                  {section.koTitle}
+                </div>
+                <p className="text-stone-300 leading-relaxed mb-4">
+                  {section.desc}
+                </p>
+                <p className="text-stone-200 leading-relaxed">
+                  {section.koDesc}
+                </p>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-4">
+                {section.buttons.map((button) => (
+                  <a
+                    key={button}
+                    href="#plaza"
+                    className="rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition duration-300 p-6 text-lg font-bold"
+                  >
+                    {button}
+                    <span className="block mt-6 text-yellow-300">Open →</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      ))}
+
+      {/* Learning Plaza Section */}
+      <section id="plaza" className="relative z-10 px-6 py-28 scroll-mt-10">
+        <div className="relative max-w-7xl mx-auto rounded-[2.5rem] border border-purple-300/20 bg-purple-950/20 backdrop-blur-xl p-8 md:p-12 overflow-hidden">
+          <div className="absolute right-8 top-8 text-[8rem] md:text-[13rem] font-black text-purple-300/5 leading-none pointer-events-none">
+            PLAZA
+          </div>
+
+          <div className="relative z-10 max-w-4xl">
+            <div className="text-purple-200 text-sm tracking-[0.3em] uppercase mb-4">
+              Learning Plaza 학습 광장
+            </div>
+            <h2 className="text-5xl md:text-7xl font-black mb-6">
+              Materials, Community, and Live Classes
+            </h2>
+            <p className="text-xl text-stone-200 leading-relaxed mb-4">
+              자료실 · 공지 · 게시판 · 강의실
+            </p>
+            <p className="text-stone-300 leading-relaxed">
+              Find study materials, notices, class applications, and live classroom links.
+              <br />
+              학습 자료, 수업 공지, 강의 신청, 화상 강의실 입장을 한곳에서 확인하세요.
+            </p>
+          </div>
+
+          <div className="relative z-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
+            {plazaButtons.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="rounded-2xl border border-purple-300/20 bg-white/5 hover:bg-purple-300 hover:text-black transition duration-300 p-6 min-h-36 flex flex-col justify-between"
+              >
+                <span className="text-xl font-bold">{item.label}</span>
+                <span className="text-sm opacity-80">{item.ko}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Teachers & Institutions Section */}
+      <section id="teachers" className="relative z-10 px-6 pt-10 pb-32 scroll-mt-10">
+        <div className="max-w-7xl mx-auto rounded-[2.5rem] border border-white/10 bg-black/60 backdrop-blur-xl p-8 md:p-12">
+          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
+            <div>
+              <div className="text-yellow-200 text-sm tracking-[0.3em] uppercase mb-4">
+                Teachers & Institutions
+              </div>
+              <h2 className="text-4xl md:text-6xl font-black mb-6">
+                Korean Education AI Research & Development Institute
+              </h2>
+              <p className="text-xl text-stone-200 leading-relaxed mb-4">
+                한국어교육AI연구개발원 연결 섹션
+              </p>
+              <p className="text-stone-300 leading-relaxed">
+                Connect teacher collaboration, institutional partnership, content licensing, and AI Korean education tools from here.
+                <br />
+                교사 협업, 기관 제휴, 콘텐츠 라이선스, AI 한국어 교육 도구 안내로 연결합니다.
+              </p>
+            </div>
+
+            <div className="grid gap-4">
+              <a href="/teachers" className="rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition duration-300 p-6 font-bold">
+                Teacher Portal / 교사 포털 →
+              </a>
+              <a href="/institutions" className="rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition duration-300 p-6 font-bold">
+                Institution Partnership / 기관 제휴 →
+              </a>
+              <a href="/license" className="rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition duration-300 p-6 font-bold">
+                License Inquiry / 라이선스 문의 →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="relative z-10 border-t border-white/10 bg-black/80 px-6 py-10 text-center text-stone-400">
+        <div className="text-white font-black tracking-[0.25em] text-2xl mb-3">GWANGGAETO</div>
+        <div>Onmaeum Korean · Korean Education AI Research & Development Institute</div>
+      </footer>
 
       {/* Floating Seal */}
       <img

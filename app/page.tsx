@@ -1,3 +1,14 @@
+function HomeLink() {
+  return (
+    <a
+      href="#top"
+      className="inline-flex items-center justify-center rounded-full border border-white/15 bg-black/50 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-stone-200 backdrop-blur-md transition hover:border-yellow-300/50 hover:bg-yellow-300 hover:text-black"
+    >
+      Home
+    </a>
+  )
+}
+
 export default function GwanggaetoCinematicLobbyHomepage() {
   const worlds = [
     {
@@ -114,11 +125,11 @@ export default function GwanggaetoCinematicLobbyHomepage() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-black text-white scroll-smooth">
       {/* Hero Background */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute left-0 top-0 h-screen w-full overflow-hidden">
         <img
           src="/images/main.png"
           alt="Gwanggaeto and Sejong"
-          className="absolute inset-0 w-full h-full object-cover object-center scale-100"
+          className="absolute inset-0 h-full w-full object-cover object-center"
         />
 
         <div className="absolute inset-0 bg-black/55" />
@@ -193,7 +204,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       </main>
 
       {/* Learning Gateways */}
-      <section id="gateways" className="relative z-10 min-h-screen px-6 py-24 flex items-center scroll-mt-10">
+      <section id="gateways" className="relative z-10 min-h-screen border-t border-white/10 bg-black px-6 py-24 flex items-center scroll-mt-10">
         <div className="absolute inset-0 opacity-70">
           <img
             src="/images/gold_frame_background.png"
@@ -204,6 +215,10 @@ export default function GwanggaetoCinematicLobbyHomepage() {
         </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto">
+          <div className="mb-8 flex justify-end">
+            <HomeLink />
+          </div>
+
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-yellow-300/30 bg-black/30 backdrop-blur-md text-sm tracking-[0.25em] uppercase text-yellow-200 mb-5">
               Learning Gateways
@@ -264,8 +279,12 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       </section>
 
       {/* Hangeul Section */}
-      <section id="hangeul" className="relative z-10 px-6 py-28 scroll-mt-10">
+      <section id="hangeul" className="relative z-10 border-t border-yellow-300/10 bg-black px-6 py-28 scroll-mt-10">
         <div className="relative max-w-7xl mx-auto rounded-[2.5rem] border border-yellow-300/20 bg-black/60 backdrop-blur-xl p-8 md:p-12 overflow-hidden">
+          <div className="relative z-20 mb-8 flex justify-end">
+            <HomeLink />
+          </div>
+
           <div className="absolute right-8 top-8 text-[10rem] md:text-[16rem] font-black text-yellow-300/5 leading-none pointer-events-none">
             한글
           </div>
@@ -304,8 +323,12 @@ export default function GwanggaetoCinematicLobbyHomepage() {
 
       {/* Main Learning Sections */}
       {learningSections.map((section) => (
-        <section key={section.id} id={section.id} className="relative z-10 px-6 py-16 scroll-mt-10">
+        <section key={section.id} id={section.id} className="relative z-10 border-t border-white/10 bg-black px-6 py-16 scroll-mt-10">
           <div className={`max-w-7xl mx-auto rounded-[2.5rem] border ${section.color} backdrop-blur-xl p-8 md:p-12`}>
+            <div className="mb-8 flex justify-end">
+              <HomeLink />
+            </div>
+
             <div className="grid lg:grid-cols-[1fr_1.2fr] gap-10 items-center">
               <div>
                 <div className="text-yellow-200 text-sm tracking-[0.3em] uppercase mb-4">
@@ -343,8 +366,12 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       ))}
 
       {/* Learning Plaza Section */}
-      <section id="plaza" className="relative z-10 px-6 py-28 scroll-mt-10">
+      <section id="plaza" className="relative z-10 border-t border-purple-300/10 bg-black px-6 py-28 scroll-mt-10">
         <div className="relative max-w-7xl mx-auto rounded-[2.5rem] border border-purple-300/20 bg-purple-950/20 backdrop-blur-xl p-8 md:p-12 overflow-hidden">
+          <div className="relative z-20 mb-8 flex justify-end">
+            <HomeLink />
+          </div>
+
           <div className="absolute right-8 top-8 text-[8rem] md:text-[13rem] font-black text-purple-300/5 leading-none pointer-events-none">
             PLAZA
           </div>
@@ -382,8 +409,12 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       </section>
 
       {/* Teachers & Institutions Section */}
-      <section id="teachers" className="relative z-10 px-6 pt-10 pb-32 scroll-mt-10">
+      <section id="teachers" className="relative z-10 border-t border-white/10 bg-black px-6 pt-10 pb-32 scroll-mt-10">
         <div className="max-w-7xl mx-auto rounded-[2.5rem] border border-white/10 bg-black/60 backdrop-blur-xl p-8 md:p-12">
+          <div className="mb-8 flex justify-end">
+            <HomeLink />
+          </div>
+
           <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
             <div>
               <div className="text-yellow-200 text-sm tracking-[0.3em] uppercase mb-4">

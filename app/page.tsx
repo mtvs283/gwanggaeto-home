@@ -173,30 +173,30 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       </header>
 
       {/* Main Lobby */}
-      <main id="top" className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-10 text-center">
-        <div className="space-y-6 max-w-4xl backdrop-blur-[2px]">
-          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-white/20 bg-black/20 backdrop-blur-md text-sm tracking-[0.25em] uppercase text-stone-200">
+      <main id="top" className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 pt-20 pb-8 text-center">
+        <div className="max-w-4xl -translate-y-8 space-y-5 backdrop-blur-[2px] [@media(max-height:800px)]:-translate-y-16 [@media(max-height:800px)]:space-y-3">
+          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-white/20 bg-black/20 backdrop-blur-md text-sm tracking-[0.25em] uppercase text-stone-200 [@media(max-height:800px)]:py-1.5 [@media(max-height:800px)]:text-xs">
             Interactive Korean Learning
           </div>
 
-          <h1 className="text-6xl md:text-8xl font-black tracking-tight leading-none drop-shadow-2xl animate-pulse">
+          <h1 className="text-5xl md:text-7xl xl:text-8xl font-black tracking-tight leading-none drop-shadow-2xl animate-pulse [@media(max-height:800px)]:text-6xl">
             Learn Korean
-            <span className="block text-yellow-300 mt-2">
+            <span className="block text-yellow-300 mt-2 [@media(max-height:800px)]:mt-0">
               Through Experience
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-stone-200 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-stone-200 max-w-2xl mx-auto leading-relaxed [@media(max-height:800px)]:max-w-xl [@media(max-height:800px)]:text-base">
             Explore Korean sounds, culture, and interaction through an immersive AI learning world.
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-4 relative">
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-3 relative [@media(max-height:800px)]:pt-1">
             <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-40 h-40 bg-yellow-300/10 blur-3xl rounded-full" />
-            <a href="#gateways" className="px-10 py-4 rounded-2xl bg-yellow-400 hover:bg-yellow-300 text-black font-bold text-lg shadow-2xl shadow-yellow-500/20 transition duration-300">
+            <a href="#gateways" className="px-10 py-4 rounded-2xl bg-yellow-400 hover:bg-yellow-300 text-black font-bold text-lg shadow-2xl shadow-yellow-500/20 transition duration-300 [@media(max-height:800px)]:px-8 [@media(max-height:800px)]:py-3 [@media(max-height:800px)]:text-base">
               Enter the World
             </a>
 
-            <a href="#hangeul" className="px-10 py-4 rounded-2xl border border-white/30 bg-black/20 backdrop-blur-md hover:bg-white/10 transition duration-300 text-lg">
+            <a href="#hangeul" className="px-10 py-4 rounded-2xl border border-white/30 bg-black/20 backdrop-blur-md hover:bg-white/10 transition duration-300 text-lg [@media(max-height:800px)]:px-8 [@media(max-height:800px)]:py-3 [@media(max-height:800px)]:text-base">
               Start Hangeul
             </a>
           </div>
@@ -204,7 +204,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       </main>
 
       {/* Learning Gateways */}
-      <section id="gateways" className="relative z-10 min-h-screen border-t border-white/10 bg-black px-6 py-10 flex items-center scroll-mt-10">
+      <section id="gateways" className="relative z-10 min-h-screen border-t border-white/10 bg-black px-6 py-8 flex items-center scroll-mt-0 [@media(max-height:800px)]:py-4">
         <div className="absolute inset-0 opacity-70">
           <img
             src="/images/gold_frame_background.png"
@@ -215,59 +215,59 @@ export default function GwanggaetoCinematicLobbyHomepage() {
         </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto">
-          <div className="mb-4 flex justify-end">
+          <div className="absolute right-0 top-0 z-20">
             <HomeLink />
           </div>
 
-          <div className="text-center mb-8">
-            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-yellow-300/30 bg-black/30 backdrop-blur-md text-xs tracking-[0.25em] uppercase text-yellow-200 mb-4">
+          <div className="text-center mb-7 pt-8 [@media(max-height:800px)]:mb-4 [@media(max-height:800px)]:pt-6">
+            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-yellow-300/30 bg-black/30 backdrop-blur-md text-xs tracking-[0.25em] uppercase text-yellow-200 mb-4 [@media(max-height:800px)]:mb-2 [@media(max-height:800px)]:py-1.5">
               Learning Gateways
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-white drop-shadow-2xl">
+            <h2 className="text-4xl md:text-5xl font-black text-white drop-shadow-2xl [@media(max-height:800px)]:text-4xl">
               Select Your Korean World
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 [@media(max-height:800px)]:gap-3">
             {worlds.map((world, index) => (
               <a
                 key={index}
                 href={world.href}
-                className={`group relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-gradient-to-b ${world.color} backdrop-blur-xl p-5 min-h-[190px] hover:-translate-y-1 hover:border-yellow-300/50 transition duration-500 cursor-pointer`}
+                className={`group relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-gradient-to-b ${world.color} backdrop-blur-xl p-5 min-h-[190px] hover:-translate-y-1 hover:border-yellow-300/50 transition duration-500 cursor-pointer [@media(max-height:800px)]:min-h-[130px] [@media(max-height:800px)]:p-4`}
               >
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-[radial-gradient(circle_at_top,rgba(255,215,0,0.12),transparent_70%)] transition duration-500" />
 
                 <div className="relative z-10 flex flex-col justify-between h-full">
                   <div>
-                    <div className="text-sm uppercase tracking-[0.25em] text-yellow-200 mb-3">
+                    <div className="text-sm uppercase tracking-[0.25em] text-yellow-200 mb-3 [@media(max-height:800px)]:mb-2 [@media(max-height:800px)]:text-xs">
                       {world.sub}
                     </div>
 
-                    <h2 className="text-2xl md:text-3xl font-black leading-tight mb-3">
+                    <h2 className="text-2xl md:text-3xl font-black leading-tight mb-3 [@media(max-height:800px)]:mb-2 [@media(max-height:800px)]:text-2xl">
                       {world.title}
                     </h2>
 
-                    <p className="text-stone-300 text-sm leading-relaxed">
+                    <p className="text-stone-300 text-sm leading-relaxed [@media(max-height:800px)]:text-xs">
                       {world.desc}
                     </p>
 
-                    <p className="mt-3 text-stone-200 text-sm leading-relaxed">
+                    <p className="mt-3 text-stone-200 text-sm leading-relaxed [@media(max-height:800px)]:hidden">
                       {world.ko}
                     </p>
 
                     {world.required && (
-                      <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-yellow-400/30 bg-yellow-500/10 px-4 py-2 text-xs tracking-[0.2em] uppercase text-yellow-300">
+                      <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-yellow-400/30 bg-yellow-500/10 px-4 py-2 text-xs tracking-[0.2em] uppercase text-yellow-300 [@media(max-height:800px)]:hidden">
                         Required First Step
                       </div>
                     )}
                   </div>
 
-                  <div className="flex items-center justify-between pt-5">
-                    <span className="text-yellow-300 font-semibold">
+                  <div className="flex items-center justify-between pt-5 [@media(max-height:800px)]:pt-3">
+                    <span className="text-yellow-300 font-semibold [@media(max-height:800px)]:text-sm">
                       Enter
                     </span>
 
-                    <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-yellow-300 group-hover:text-black transition duration-300">
+                    <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-yellow-300 group-hover:text-black transition duration-300 [@media(max-height:800px)]:h-9 [@media(max-height:800px)]:w-9">
                       →
                     </div>
                   </div>
@@ -279,9 +279,9 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       </section>
 
       {/* Hangeul Section */}
-      <section id="hangeul" className="relative z-10 border-t border-yellow-300/10 bg-black px-6 py-28 scroll-mt-10">
-        <div className="relative max-w-7xl mx-auto rounded-[2.5rem] border border-yellow-300/20 bg-black/60 backdrop-blur-xl p-8 md:p-12 overflow-hidden">
-          <div className="relative z-20 mb-8 flex justify-end">
+      <section id="hangeul" className="relative z-10 min-h-screen border-t border-yellow-300/10 bg-black px-6 py-12 flex items-center scroll-mt-0">
+        <div className="relative max-w-7xl mx-auto rounded-[2rem] border border-yellow-300/20 bg-black/60 backdrop-blur-xl p-6 md:p-8 overflow-hidden">
+          <div className="relative z-20 mb-5 flex justify-end">
             <HomeLink />
           </div>
 
@@ -293,10 +293,10 @@ export default function GwanggaetoCinematicLobbyHomepage() {
             <div className="text-yellow-200 text-sm tracking-[0.3em] uppercase mb-4">
               Hangeul 한글 배우기
             </div>
-            <h2 className="text-5xl md:text-7xl font-black mb-6">
+            <h2 className="text-4xl md:text-5xl font-black mb-4">
               Start with Korean sounds and letters.
             </h2>
-            <p className="text-xl text-stone-200 leading-relaxed mb-4">
+            <p className="text-lg text-stone-200 leading-relaxed mb-3">
               한국어 소리와 글자부터 시작하세요.
             </p>
             <p className="text-stone-300 leading-relaxed">
@@ -306,12 +306,12 @@ export default function GwanggaetoCinematicLobbyHomepage() {
             </p>
           </div>
 
-          <div className="relative z-10 grid sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-10">
+          <div className="relative z-10 grid sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-8">
             {hangeulButtons.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="rounded-2xl border border-yellow-300/20 bg-yellow-300/10 hover:bg-yellow-300 hover:text-black transition duration-300 p-5 min-h-32 flex flex-col justify-between"
+                className="rounded-2xl border border-yellow-300/20 bg-yellow-300/10 hover:bg-yellow-300 hover:text-black transition duration-300 p-5 min-h-28 flex flex-col justify-between"
               >
                 <span className="text-lg font-bold">{item.label}</span>
                 <span className="text-sm opacity-80">{item.ko}</span>

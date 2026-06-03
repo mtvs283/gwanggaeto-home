@@ -174,7 +174,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
 
       {/* Main Lobby */}
       <main id="top" className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 pt-20 pb-8 text-center">
-        <div className="max-w-4xl -translate-y-8 space-y-5 backdrop-blur-[2px] [@media(max-height:800px)]:-translate-y-16 [@media(max-height:800px)]:space-y-3">
+        <div className="max-w-4xl translate-y-10 space-y-5 backdrop-blur-[2px] [@media(max-height:800px)]:translate-y-6 [@media(max-height:800px)]:space-y-3">
           <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-white/20 bg-black/20 backdrop-blur-md text-sm tracking-[0.25em] uppercase text-stone-200 [@media(max-height:800px)]:py-1.5 [@media(max-height:800px)]:text-xs">
             Interactive Korean Learning
           </div>
@@ -190,7 +190,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
             Explore Korean sounds, culture, and interaction through an immersive AI learning world.
           </p>
 
-          <div className="relative flex translate-y-12 flex-wrap items-center justify-center gap-4 pt-3 [@media(max-height:800px)]:translate-y-10 [@media(max-height:800px)]:pt-1">
+          <div className="relative flex flex-wrap items-center justify-center gap-4 pt-3 [@media(max-height:800px)]:pt-1">
             <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-40 h-40 bg-yellow-300/10 blur-3xl rounded-full" />
             <a href="#gateways" className="px-10 py-4 rounded-2xl bg-yellow-400 hover:bg-yellow-300 text-black font-bold text-lg shadow-2xl shadow-yellow-500/20 transition duration-300 [@media(max-height:800px)]:px-8 [@media(max-height:800px)]:py-3 [@media(max-height:800px)]:text-base">
               Enter the World

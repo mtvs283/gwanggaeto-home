@@ -38,7 +38,7 @@ const badgeStyles: Record<string, string> = {
 
 export default function NoticePage() {
   return (
-    <div className="min-h-screen bg-black text-white px-6 py-10 max-w-4xl mx-auto">
+    <div className="min-h-screen bg-black text-white px-6 md:px-10 py-8">
 
       {/* Breadcrumb */}
       <p className="text-xs tracking-[0.3em] uppercase text-stone-500 mb-6">

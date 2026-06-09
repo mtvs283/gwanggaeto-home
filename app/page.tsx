@@ -123,7 +123,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
   ]
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-black text-white scroll-smooth">
+    <div className="relative min-h-screen overflow-hidden bg-black text-white scroll-smooth">
       {/* Hero Background */}
       <div className="absolute left-0 top-0 h-screen w-full overflow-hidden">
         <img

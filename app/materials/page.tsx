@@ -142,8 +142,7 @@ export default function MaterialsPage() {
   const current = worlds.find((w) => w.id === active)!
 
   return (
-    <div className="min-h-screen bg-black text-white px-8 md:px-16 py-8 max-w-7xl mx-auto">
-
+     <div className="min-h-screen bg-black text-white px-6 md:px-10 py-8">
       <p className="text-xs tracking-[0.3em] uppercase text-stone-500 mb-4">
         Learning Plaza &nbsp;›&nbsp;<span className="text-yellow-400">Materials</span>
       </p>

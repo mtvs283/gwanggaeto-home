@@ -50,7 +50,9 @@ const worlds = [
 ]
 
 const typeIcon: Record<string, string> = {
-  "Worksheet": "🗂", "Word Card": "🃏", "Picture Card": "🖼",
+  "Worksheet": "🗂",
+  "Word Card": "🃏",
+  "Picture Card": "🖼",
 }
 
 function LightningCanvas() {
@@ -58,50 +60,79 @@ function LightningCanvas() {
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
-    const ctx = canvas.getContext("2d")!
-    let animId: number
+    const ctx = canvas.getContext("2d")
+    if (!ctx) return
+    let animId = 0
     let flashTimer = 0
     let flashing = false
     let flashAlpha = 0
 
     function resize() {
+      if (!canvas) return
       canvas.width = canvas.offsetWidth
       canvas.height = canvas.offsetHeight
     }
     resize()
     window.addEventListener("resize", resize)
 
-    function randBetween(a: number, b: number) { return a + Math.random() * (b - a) }
+    function randBetween(a: number, b: number) {
+      return a + Math.random() * (b - a)
+    }
 
     function drawBolt(x1: number, y1: number, x2: number, y2: number, depth: number, color: string) {
+      if (!canvas || !ctx) return
       if (depth <= 0) {
-        ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2)
-        ctx.strokeStyle = color; ctx.lineWidth = 0.8; ctx.stroke(); return
+        ctx.beginPath()
+        ctx.moveTo(x1, y1)
+        ctx.lineTo(x2, y2)
+        ctx.strokeStyle = color
+        ctx.lineWidth = 0.8
+        ctx.stroke()
+        return
       }
       const mx = (x1 + x2) / 2 + (Math.random() - 0.5) * canvas.height * 0.15
       const my = (y1 + y2) / 2 + (Math.random() - 0.5) * canvas.height * 0.08
       drawBolt(x1, y1, mx, my, depth - 1, color)
       drawBolt(mx, my, x2, y2, depth - 1, color)
-      if (Math.random() < 0.4) drawBolt(mx, my, mx + (Math.random() - 0.5) * 80, my + Math.random() * 50, depth - 2, color)
+      if (Math.random() < 0.4) {
+        drawBolt(mx, my, mx + (Math.random() - 0.5) * 80, my + Math.random() * 50, depth - 2, color)
+      }
     }
 
     function animate() {
+      if (!canvas || !ctx) return
       animId = requestAnimationFrame(animate)
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       flashTimer++
-      if (flashTimer > randBetween(40, 90)) { flashTimer = 0; flashing = true; flashAlpha = 1 }
+      if (flashTimer > randBetween(40, 90)) {
+        flashTimer = 0
+        flashing = true
+        flashAlpha = 1
+      }
       if (flashing) {
         ctx.fillStyle = `rgba(212,168,67,${flashAlpha * 0.06})`
         ctx.fillRect(0, 0, canvas.width, canvas.height)
         const sx = randBetween(canvas.width * 0.2, canvas.width * 0.8)
         drawBolt(sx, 0, sx + randBetween(-60, 60), canvas.height, 3, `rgba(212,168,67,${flashAlpha * 0.9})`)
-        if (Math.random() < 0.5) drawBolt(randBetween(canvas.width * 0.1, canvas.width * 0.9), 0, randBetween(canvas.width * 0.1, canvas.width * 0.9), canvas.height, 2, `rgba(255,255,255,${flashAlpha * 0.5})`)
+        if (Math.random() < 0.5) {
+          drawBolt(
+            randBetween(canvas.width * 0.1, canvas.width * 0.9), 0,
+            randBetween(canvas.width * 0.1, canvas.width * 0.9), canvas.height,
+            2, `rgba(255,255,255,${flashAlpha * 0.5})`
+          )
+        }
         flashAlpha -= 0.12
-        if (flashAlpha <= 0) { flashing = false; flashAlpha = 0 }
+        if (flashAlpha <= 0) {
+          flashing = false
+          flashAlpha = 0
+        }
       }
     }
     animate()
-    return () => { cancelAnimationFrame(animId); window.removeEventListener("resize", resize) }
+    return () => {
+      cancelAnimationFrame(animId)
+      window.removeEventListener("resize", resize)
+    }
   }, [])
   return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
 }
@@ -113,17 +144,14 @@ export default function MaterialsPage() {
   return (
     <div className="min-h-screen bg-black text-white px-8 md:px-16 py-8 max-w-7xl mx-auto">
 
-      {/* Breadcrumb */}
       <p className="text-xs tracking-[0.3em] uppercase text-stone-500 mb-4">
         Learning Plaza &nbsp;›&nbsp;<span className="text-yellow-400">Materials</span>
       </p>
 
-      {/* Hero with lightning */}
       <div className="relative rounded-2xl bg-[#0d0d0d] border border-white/5 p-6 mb-5 overflow-hidden">
         <LightningCanvas />
         <div className="relative z-10">
           <div className="inline-flex items-center gap-2 text-xs tracking-[0.25em] uppercase text-yellow-400 border border-yellow-400/30 rounded-full px-3 py-1 mb-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
             Study Materials
           </div>
           <div className="flex items-baseline gap-3">
@@ -135,12 +163,12 @@ export default function MaterialsPage() {
         </div>
       </div>
 
-      {/* World selector 3+2 */}
       <div className="grid grid-cols-3 gap-2 mb-2">
         {worlds.slice(0, 3).map((w) => (
           <button key={w.id} onClick={() => setActive(w.id)}
             className={`py-2.5 rounded-xl border text-sm font-medium transition ${active === w.id ? "border-yellow-400/50 text-yellow-400 bg-yellow-400/10" : "border-white/10 text-stone-400 hover:border-white/20"}`}>
-            {w.label}<span className="block text-[10px] text-stone-600 mt-0.5">{w.ko}</span>
+            {w.label}
+            <span className="block text-[10px] text-stone-600 mt-0.5">{w.ko}</span>
           </button>
         ))}
       </div>
@@ -148,18 +176,17 @@ export default function MaterialsPage() {
         {worlds.slice(3).map((w) => (
           <button key={w.id} onClick={() => setActive(w.id)}
             className={`py-2.5 rounded-xl border text-sm font-medium transition ${active === w.id ? "border-yellow-400/50 text-yellow-400 bg-yellow-400/10" : "border-white/10 text-stone-400 hover:border-white/20"}`}>
-            {w.label}<span className="block text-[10px] text-stone-600 mt-0.5">{w.ko}</span>
+            {w.label}
+            <span className="block text-[10px] text-stone-600 mt-0.5">{w.ko}</span>
           </button>
         ))}
       </div>
 
-      {/* Section label */}
       <p className="text-xs tracking-[0.2em] uppercase text-stone-600 mb-3 flex items-center gap-2">
         <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ background: current.color }}></span>
         {current.label} · {current.ko}
       </p>
 
-      {/* 2x2 grid */}
       <div className="grid grid-cols-2 gap-3">
         {current.materials.map((m, i) => (
           <div key={i} className={`bg-white/5 border border-white/10 rounded-2xl p-4 cursor-pointer hover:border-yellow-400/30 transition ${m.locked ? "opacity-40" : ""}`}>
@@ -174,13 +201,9 @@ export default function MaterialsPage() {
         ))}
       </div>
 
-      {/* Login banner */}
       <div className="mt-5 flex items-center justify-between bg-white/5 border border-yellow-400/20 rounded-2xl px-5 py-3 gap-4">
         <div>
-          <p className="text-sm text-stone-400">
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="inline mr-1.5 -mt-0.5" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            Log in to preview all materials.
-          </p>
+          <p className="text-sm text-stone-400">Log in to preview all materials.</p>
           <p className="text-xs text-stone-600 mt-0.5">더 많은 자료는 로그인 후 미리볼 수 있어요.</p>
         </div>
         <a href="/login" className="text-sm font-bold bg-yellow-400 text-black px-5 py-2 rounded-xl hover:bg-yellow-300 transition whitespace-nowrap">

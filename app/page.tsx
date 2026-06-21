@@ -454,12 +454,22 @@ export default function GwanggaetoCinematicLobbyHomepage() {
         <div>Onmaeum Korean · Korean Education AI Research & Development Institute</div>
       </footer>
 
-      {/* Floating Seal */}
-      <img
-        src="/images/stamp_onmaeum.png"
-        alt="seal"
-        className="fixed bottom-8 right-8 w-24 rotate-6 opacity-90 hover:scale-110 transition duration-500 z-30"
-      />
+      {/* Floating Seal → 집현전 약방 */}
+      <a
+        href="https://yakbang-two.vercel.app/"
+        aria-label="집현전 약방으로 가기"
+        title="집현전 약방"
+        className="group fixed bottom-8 right-8 z-30 block transition duration-500 hover:scale-110"
+      >
+        <img
+          src="/images/stamp_onmaeum.png"
+          alt="집현전 약방 도장"
+          className="w-24 rotate-6 opacity-90 group-hover:opacity-100"
+        />
+        <span className="absolute -top-9 right-0 whitespace-nowrap rounded-lg bg-black/75 px-3 py-1.5 text-sm font-bold text-yellow-300 opacity-0 backdrop-blur transition duration-300 group-hover:opacity-100">
+          집현전 약방으로 →
+        </span>
+      </a>
 
       {/* Moongchi */}
       <div className="fixed left-5 bottom-5 z-30 group cursor-pointer">

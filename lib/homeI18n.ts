@@ -1,4 +1,6 @@
 import { homeI18nPart2 } from "./homeI18nPart2";
+import { homeI18nPart3 } from "./homeI18nPart3";
+import { homeI18nArEsFrDe } from "./homeI18nArEsFrDe";
 
 const homeI18nPart1 = {
   ko: {
@@ -354,7 +356,12 @@ const homeI18nPart1 = {
   },
 } as const;
 
-export const homeI18n = { ...homeI18nPart1, ...homeI18nPart2 };
+export const homeI18n = {
+  ...homeI18nPart1,
+  ...homeI18nPart2,
+  ...homeI18nPart3,
+  ...homeI18nArEsFrDe,
+};
 
 export type HomeMessages = (typeof homeI18nPart1)["en"];
 export type HomeI18nLocale = keyof typeof homeI18n;

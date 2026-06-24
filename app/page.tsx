@@ -95,7 +95,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       koTitleKey: "studyAbroadKorean",
       desc: "Learn the Korean needed for campus life, school notices, departments, housing, and student services.",
       koDesc: "대학 생활, 학교 공지, 학과, 기숙사, 학생 지원 서비스에 필요한 한국어를 배웁니다.",
-      koDescKey: undefined,
+      koDescKey: "schoolKoreanDesc",
       buttons: ["Campus Life", "School Notices", "Presentation Korean", "Study Guides"],
       color: "border-blue-300/20 bg-blue-950/20",
     },

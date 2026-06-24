@@ -248,6 +248,14 @@ const HOME_I18N_BY_LOCALE: Partial<Record<LocaleCode, HomeI18nLocale>> = {
   hi: "hi",
   bn: "bn",
   kk: "kk",
+  ky: "ky",
+  fil: "fil",
+  ar: "ar",
+  es: "es",
+  fr: "fr",
+  de: "de",
+  sw: "sw",
+  ha: "ha",
 };
 
 function getHomeMessages(code: LocaleCode): HomeMessages {

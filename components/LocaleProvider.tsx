@@ -20,6 +20,8 @@ import {
 
 interface LocaleContextValue {
   locale: LocaleCode;
+  /** 학습자가 고른 모국어(비-한국어). 토글 "켜짐" 상태에서 보여줄 언어. */
+  preferredLocale: LocaleCode;
   setLocale: (code: LocaleCode) => void;
 }
 
@@ -38,11 +40,21 @@ export function useLocaleContext(): LocaleContextValue {
 // render on the deterministic default and swaps to the detected locale after
 // hydration, without a hydration mismatch or a setState-in-effect.
 let storeLocale: LocaleCode | null = null;
+// 마지막으로 고른 비-한국어 언어. 토글로 한국어↔모국어를 오갈 때의 "모국어" 쪽.
+let preferredNonKo: LocaleCode | null = null;
 const listeners = new Set<() => void>();
 
 function getSnapshot(): LocaleCode {
   if (storeLocale === null) storeLocale = detectLocale();
   return storeLocale;
+}
+
+function getPreferredNonKo(): LocaleCode {
+  if (preferredNonKo === null) {
+    if (storeLocale === null) storeLocale = detectLocale();
+    preferredNonKo = storeLocale !== "ko" ? storeLocale : DEFAULT_LOCALE;
+  }
+  return preferredNonKo;
 }
 
 function getServerSnapshot(): LocaleCode {
@@ -58,6 +70,8 @@ function subscribe(callback: () => void): () => void {
 
 function setStoreLocale(code: LocaleCode): void {
   storeLocale = code;
+  // 한국어가 아니면 "정한 모국어"로 기억해 둔다(토글 켜짐 상태 대상).
+  if (code !== "ko") preferredNonKo = code;
   persistLocale(code);
   for (const listener of listeners) listener();
 }
@@ -83,7 +97,10 @@ export default function LocaleProvider({
   }, [locale]);
 
   const messages = useMemo(() => getMessages(locale), [locale]);
-  const value = useMemo(() => ({ locale, setLocale }), [locale, setLocale]);
+  const value = useMemo(
+    () => ({ locale, preferredLocale: getPreferredNonKo(), setLocale }),
+    [locale, setLocale],
+  );
 
   return (
     <LocaleContext.Provider value={value}>

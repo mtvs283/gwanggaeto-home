@@ -23,8 +23,12 @@ import uz from "@/locales/uz.json";
 import vi from "@/locales/vi.json";
 import zhCN from "@/locales/zh-CN.json";
 import zhTW from "@/locales/zh-TW.json";
+import { homeI18n, type HomeI18nLocale, type HomeMessages } from "./homeI18n";
 
 export type Messages = typeof en;
+
+/** Combined message shape passed to next-intl (hero from JSON + home table). */
+export type AppMessages = Messages & { home: HomeMessages };
 
 export type LocaleCode =
   | "ko"
@@ -224,8 +228,32 @@ function mergeWithFallback<T>(base: T, override: unknown): T {
   return (override === undefined || override === null ? base : override) as T;
 }
 
+// Maps our locale codes to the homeI18n table keys. homeI18n only ships 9
+// languages; any locale not listed here uses the en home content.
+const HOME_I18N_BY_LOCALE: Partial<Record<LocaleCode, HomeI18nLocale>> = {
+  ko: "ko",
+  en: "en",
+  ja: "ja",
+  "zh-CN": "zhCN",
+  "zh-TW": "zhTW",
+  vi: "vi",
+  th: "th",
+  id: "id",
+  mn: "mn",
+};
+
+function getHomeMessages(code: LocaleCode): HomeMessages {
+  const key = HOME_I18N_BY_LOCALE[code];
+  if (!key || key === "en") return homeI18n.en;
+  // Per-key fallback to en in case a value is ever left blank.
+  return mergeWithFallback(homeI18n.en, homeI18n[key]);
+}
+
 /** Build the messages for a locale, falling back to en for empty/missing keys. */
-export function getMessages(code: LocaleCode): Messages {
-  if (code === DEFAULT_LOCALE) return RAW_MESSAGES[DEFAULT_LOCALE];
-  return mergeWithFallback(RAW_MESSAGES[DEFAULT_LOCALE], RAW_MESSAGES[code]);
+export function getMessages(code: LocaleCode): AppMessages {
+  const hero =
+    code === DEFAULT_LOCALE
+      ? RAW_MESSAGES[DEFAULT_LOCALE]
+      : mergeWithFallback(RAW_MESSAGES[DEFAULT_LOCALE], RAW_MESSAGES[code]);
+  return { ...hero, home: getHomeMessages(code) };
 }

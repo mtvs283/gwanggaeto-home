@@ -1,4 +1,6 @@
-export const homeI18n = {
+import { homeI18nPart2 } from "./homeI18nPart2";
+
+const homeI18nPart1 = {
   ko: {
     startKoreanSoundLetters: "한국어 소리와 글자부터 시작하세요.",
     schoolKoreanDesc: "학교 생활에 필요한 한국어를 배웁니다.",
@@ -352,5 +354,7 @@ export const homeI18n = {
   },
 } as const;
 
-export type HomeMessages = (typeof homeI18n)["en"];
+export const homeI18n = { ...homeI18nPart1, ...homeI18nPart2 };
+
+export type HomeMessages = (typeof homeI18nPart1)["en"];
 export type HomeI18nLocale = keyof typeof homeI18n;

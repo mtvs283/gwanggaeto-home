@@ -240,6 +240,14 @@ const HOME_I18N_BY_LOCALE: Partial<Record<LocaleCode, HomeI18nLocale>> = {
   th: "th",
   id: "id",
   mn: "mn",
+  ru: "ru",
+  uz: "uz",
+  ne: "ne",
+  my: "my",
+  km: "km",
+  hi: "hi",
+  bn: "bn",
+  kk: "kk",
 };
 
 function getHomeMessages(code: LocaleCode): HomeMessages {

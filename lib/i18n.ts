@@ -24,11 +24,15 @@ import vi from "@/locales/vi.json";
 import zhCN from "@/locales/zh-CN.json";
 import zhTW from "@/locales/zh-TW.json";
 import { homeI18n, type HomeI18nLocale, type HomeMessages } from "./homeI18n";
+import { headerI18n, type HeaderMessages } from "./headerI18n";
 
 export type Messages = typeof en;
 
-/** Combined message shape passed to next-intl (hero from JSON + home table). */
-export type AppMessages = Messages & { home: HomeMessages };
+/** Combined message shape passed to next-intl (hero JSON + home + header). */
+export type AppMessages = Messages & {
+  home: HomeMessages;
+  header: HeaderMessages;
+};
 
 export type LocaleCode =
   | "ko"
@@ -265,11 +269,21 @@ function getHomeMessages(code: LocaleCode): HomeMessages {
   return mergeWithFallback(homeI18n.en, homeI18n[key]);
 }
 
+function getHeaderMessages(code: LocaleCode): HeaderMessages {
+  if (code === DEFAULT_LOCALE) return headerI18n.en;
+  // headerI18n is keyed by the exact locale code; fall back to en per key.
+  return mergeWithFallback(headerI18n.en, headerI18n[code]);
+}
+
 /** Build the messages for a locale, falling back to en for empty/missing keys. */
 export function getMessages(code: LocaleCode): AppMessages {
   const hero =
     code === DEFAULT_LOCALE
       ? RAW_MESSAGES[DEFAULT_LOCALE]
       : mergeWithFallback(RAW_MESSAGES[DEFAULT_LOCALE], RAW_MESSAGES[code]);
-  return { ...hero, home: getHomeMessages(code) };
+  return {
+    ...hero,
+    home: getHomeMessages(code),
+    header: getHeaderMessages(code),
+  };
 }

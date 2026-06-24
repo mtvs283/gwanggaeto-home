@@ -1,3 +1,8 @@
+"use client"
+
+import { useTranslations } from "next-intl"
+import LocaleToggle from "@/components/LocaleToggle"
+
 function HomeLink() {
   return (
     <a
@@ -10,6 +15,8 @@ function HomeLink() {
 }
 
 export default function GwanggaetoCinematicLobbyHomepage() {
+  const t = useTranslations("hero")
+
   const worlds = [
     {
       title: "Hangeul",
@@ -164,40 +171,32 @@ export default function GwanggaetoCinematicLobbyHomepage() {
           </div>
         </a>
 
-        <div className="flex items-center gap-3 text-sm">
-          <button className="px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 transition">KR</button>
-          <button className="px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 transition">EN</button>
-          <button className="px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 transition">JP</button>
-          <button className="px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 transition">VN</button>
-        </div>
+        <LocaleToggle />
       </header>
 
       {/* Main Lobby */}
       <main id="top" className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 pt-20 pb-8 text-center">
         <div className="max-w-4xl translate-y-10 space-y-5 backdrop-blur-[2px] [@media(max-height:800px)]:translate-y-6 [@media(max-height:800px)]:space-y-3">
           <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-white/20 bg-black/20 backdrop-blur-md text-sm tracking-[0.25em] uppercase text-stone-200 [@media(max-height:800px)]:py-1.5 [@media(max-height:800px)]:text-xs">
-            Interactive Korean Learning
+            {t("eyebrow")}
           </div>
 
           <h1 className="text-5xl md:text-7xl xl:text-8xl font-black tracking-tight leading-none drop-shadow-2xl animate-pulse [@media(max-height:800px)]:text-6xl">
-            Learn Korean
-            <span className="block text-yellow-300 mt-2 [@media(max-height:800px)]:mt-0">
-              Through Experience
-            </span>
+            {t("headline")}
           </h1>
 
           <p className="text-lg md:text-xl text-stone-200 max-w-2xl mx-auto leading-relaxed [@media(max-height:800px)]:max-w-xl [@media(max-height:800px)]:text-base">
-            Explore Korean sounds, culture, and interaction through an immersive AI learning world.
+            {t("subcopy")}
           </p>
 
           <div className="relative flex flex-wrap items-center justify-center gap-4 pt-3 [@media(max-height:800px)]:pt-1">
             <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-40 h-40 bg-yellow-300/10 blur-3xl rounded-full" />
             <a href="#gateways" className="px-10 py-4 rounded-2xl bg-yellow-400 hover:bg-yellow-300 text-black font-bold text-lg shadow-2xl shadow-yellow-500/20 transition duration-300 [@media(max-height:800px)]:px-8 [@media(max-height:800px)]:py-3 [@media(max-height:800px)]:text-base">
-              Enter the World
+              {t("cta_primary")}
             </a>
 
             <a href="#hangeul" className="px-10 py-4 rounded-2xl border border-white/30 bg-black/20 backdrop-blur-md hover:bg-white/10 transition duration-300 text-lg [@media(max-height:800px)]:px-8 [@media(max-height:800px)]:py-3 [@media(max-height:800px)]:text-base">
-              Start Hangeul
+              {t("cta_secondary")}
             </a>
           </div>
         </div>

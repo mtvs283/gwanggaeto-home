@@ -24,8 +24,8 @@ export default function LocaleToggle() {
         <span className="font-semibold uppercase tracking-wide">
           {current.code}
         </span>
-        <span aria-hidden className="text-[10px] opacity-70">
-          {"\u25BC"}
+        <span aria-hidden className="text-xs opacity-70">
+          {"\u2195"}
         </span>
       </button>
 

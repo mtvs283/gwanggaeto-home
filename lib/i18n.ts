@@ -101,6 +101,9 @@ export const LOCALES: LocaleMeta[] = [
   { code: "ha", label: "Hausa", flag: "\u{1F1F3}\u{1F1EC}" },
 ];
 
+// Default locale: shown on first visit (no saved preference) and during SSR,
+// and used to fill in any missing translation key. English is the default for
+// this site (it is not a Korean-audience homepage).
 export const DEFAULT_LOCALE: LocaleCode = "en";
 
 export const LOCALE_STORAGE_KEY = "gwanggaeto_locale";

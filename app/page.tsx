@@ -98,7 +98,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       desc: "Learn the Korean needed for campus life, school notices, departments, housing, and student services.",
       koDesc: "대학 생활, 학교 공지, 학과, 기숙사, 학생 지원 서비스에 필요한 한국어를 배웁니다.",
       koDescKey: "schoolKoreanDesc",
-      buttons: ["Campus Life", "School Notices", "Presentation Korean", "Study Guides"],
+      buttons: ["캠퍼스 생활", "학교 공지", "발표 한국어", "학습 가이드"],
       color: "border-blue-300/20 bg-blue-950/20",
     },
     {
@@ -109,7 +109,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       desc: "Practice workplace Korean for factories, schedules, safety, instructions, and real communication at work.",
       koDesc: "공장, 일정, 안전, 업무 지시, 직장 생활 대화에 필요한 한국어를 연습합니다.",
       koDescKey: "workKoreanDesc",
-      buttons: ["Factory Korean", "Safety Korean", "Work Dialogues", "EPS Practice"],
+      buttons: ["공장 한국어", "안전 한국어", "업무 회화", "EPS 연습"],
       color: "border-red-300/20 bg-red-950/20",
     },
     {
@@ -120,7 +120,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       desc: "Practice Korean for greetings, shopping, hospitals, banks, phone calls, and everyday problem solving.",
       koDesc: "인사, 쇼핑, 병원, 은행, 전화, 일상 문제 해결 표현을 상황별로 배웁니다.",
       koDescKey: "dailyKoreanDesc",
-      buttons: ["Conversation", "Role Play", "Listening", "Word Cards"],
+      buttons: ["회화", "역할극", "듣기", "단어 카드"],
       color: "border-stone-300/20 bg-stone-900/40",
     },
     {
@@ -131,7 +131,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       desc: "Learn the Korean you need for taxis, restaurants, shopping, directions, transportation, and travel emergencies.",
       koDesc: "택시, 식당, 쇼핑, 길 찾기, 교통, 여행 중 긴급 상황 표현을 배웁니다.",
       koDescKey: "travelKoreanDesc",
-      buttons: ["Taxi", "Restaurant", "Shopping", "Transportation"],
+      buttons: ["택시", "식당", "쇼핑", "교통"],
       color: "border-emerald-300/20 bg-emerald-950/20",
     },
   ]
@@ -167,8 +167,8 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       <div className="absolute top-0 left-0 w-[40rem] h-[40rem] bg-yellow-400/10 blur-[160px] rounded-full" />
       <div className="absolute bottom-0 right-0 w-[35rem] h-[35rem] bg-amber-300/10 blur-[140px] rounded-full" />
 
-      {/* Navigation */}
-      <header className="absolute left-0 right-0 top-0 z-20 flex items-center justify-between px-6 md:px-10 py-6">
+      {/* Navigation (fixed so the logo + language toggle float like the corner badges) */}
+      <header className="fixed left-0 right-0 top-0 z-40 flex items-center justify-between px-6 md:px-10 py-6">
         <a href="#top" className="block">
           <div className="text-stone-200 text-xs tracking-[0.4em] uppercase">
             Onmaeum Korean
@@ -254,10 +254,6 @@ export default function GwanggaetoCinematicLobbyHomepage() {
                     </h2>
 
                     <p className="text-stone-300 text-sm leading-relaxed [@media(max-height:800px)]:text-xs">
-                      {world.desc}
-                    </p>
-
-                    <p className="mt-3 text-stone-200 text-sm leading-relaxed [@media(max-height:800px)]:hidden">
                       {th(world.koKey)}
                     </p>
 
@@ -303,8 +299,6 @@ export default function GwanggaetoCinematicLobbyHomepage() {
               {th("startKoreanSoundLetters")}
             </h2>
             <p className="text-stone-300 leading-relaxed">
-              Learn Korean letters through vowels, consonants, syllables, final consonants, and word cards.
-              <br />
               모음, 자음, 실라블, 받침, 단어카드를 통해 한글의 기본 구조를 익힙니다.
             </p>
           </div>
@@ -316,8 +310,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
                 href={item.href}
                 className="rounded-2xl border border-yellow-300/20 bg-yellow-300/10 hover:bg-yellow-300 hover:text-black transition duration-300 p-5 min-h-28 flex flex-col justify-between"
               >
-                <span className="text-lg font-bold">{item.label}</span>
-                <span className="text-sm opacity-80">{th(item.koKey)}</span>
+                <span className="text-lg font-bold">{th(item.koKey)}</span>
               </a>
             ))}
           </div>
@@ -343,9 +336,6 @@ export default function GwanggaetoCinematicLobbyHomepage() {
                 <div className="text-2xl text-yellow-200 font-bold mb-6">
                   {th(section.koTitleKey)}
                 </div>
-                <p className="text-stone-300 leading-relaxed mb-4">
-                  {section.desc}
-                </p>
                 <p className="text-stone-200 leading-relaxed">
                   {section.koDescKey ? th(section.koDescKey) : section.koDesc}
                 </p>
@@ -359,7 +349,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
                     className="rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition duration-300 p-6 text-lg font-bold"
                   >
                     {button}
-                    <span className="block mt-6 text-yellow-300">Open →</span>
+                    <span className="block mt-6 text-yellow-300">열기 →</span>
                   </a>
                 ))}
               </div>
@@ -390,8 +380,6 @@ export default function GwanggaetoCinematicLobbyHomepage() {
               {th("plazaItems")}
             </p>
             <p className="text-stone-300 leading-relaxed">
-              Find study materials, notices, class applications, and live classroom links.
-              <br />
               {th("plazaDesc")}
             </p>
           </div>
@@ -403,8 +391,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
                 href={item.href}
                 className="rounded-2xl border border-purple-300/20 bg-white/5 hover:bg-purple-300 hover:text-black transition duration-300 p-5 min-h-28 flex flex-col justify-between"
               >
-                <span className="text-xl font-bold">{item.label}</span>
-                <span className="text-sm opacity-80">{th(item.koKey)}</span>
+                <span className="text-xl font-bold">{th(item.koKey)}</span>
               </a>
             ))}
           </div>
@@ -430,21 +417,19 @@ export default function GwanggaetoCinematicLobbyHomepage() {
                 {th("aiInstituteSection")}
               </p>
               <p className="text-stone-300 leading-relaxed">
-                Connect teacher collaboration, institutional partnership, content licensing, and AI Korean education tools from here.
-                <br />
                 {th("aiInstituteDesc")}
               </p>
             </div>
 
             <div className="grid gap-4">
               <a href="/teachers" className="rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition duration-300 p-6 font-bold">
-                Teacher Portal / {th("teacherPortal")} →
+                {th("teacherPortal")} →
               </a>
               <a href="/institutions" className="rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition duration-300 p-6 font-bold">
-                Institution Partnership / {th("institutionPartnership")} →
+                {th("institutionPartnership")} →
               </a>
               <a href="/license" className="rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition duration-300 p-6 font-bold">
-                License Inquiry / {th("licenseInquiry")} →
+                {th("licenseInquiry")} →
               </a>
             </div>
           </div>

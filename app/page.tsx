@@ -91,7 +91,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       titleKey: "studyTitle",
       koTitleKey: "studyAbroadKorean",
       koDescKey: "schoolKoreanDesc",
-      buttons: ["Campus Life", "School Notices", "Presentation Korean", "Study Guides"],
+      buttonKeys: ["studyCampusLife", "schoolNotices", "presentationKorean", "studyGuides"],
       color: "border-blue-300/20 bg-blue-950/20",
     },
     {
@@ -100,7 +100,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       titleKey: "workTitle",
       koTitleKey: "workKorean",
       koDescKey: "workKoreanDesc",
-      buttons: ["Factory Korean", "Safety Korean", "Work Dialogues", "EPS Practice"],
+      buttonKeys: ["factoryKorean", "safetyKorean", "workDialogues", "epsPractice"],
       color: "border-red-300/20 bg-red-950/20",
     },
     {
@@ -109,7 +109,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       titleKey: "dailyTitle",
       koTitleKey: "dailyKorean",
       koDescKey: "dailyKoreanDesc",
-      buttons: ["Conversation", "Role Play", "Listening", "Word Cards"],
+      buttonKeys: ["conversationPractice", "rolePlay", "listeningPractice", "wordCards"],
       color: "border-stone-300/20 bg-stone-900/40",
     },
     {
@@ -118,7 +118,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       titleKey: "survivalGuide",
       koTitleKey: "travelKorean",
       koDescKey: "travelKoreanDesc",
-      buttons: ["Taxi", "Restaurant", "Shopping", "Transportation"],
+      buttonKeys: ["taxiKorean", "restaurantKorean", "shoppingKorean", "transportationKorean"],
       color: "border-emerald-300/20 bg-emerald-950/20",
     },
   ]
@@ -330,14 +330,14 @@ export default function GwanggaetoCinematicLobbyHomepage() {
               </div>
 
               <div className="grid sm:grid-cols-2 gap-4">
-                {section.buttons.map((button) => (
+                {section.buttonKeys.map((buttonKey) => (
                   <a
-                    key={button}
+                    key={buttonKey}
                     href="#plaza"
                     className="rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition duration-300 p-6 text-lg font-bold"
                   >
-                    {button}
-                    <span className="block mt-6 text-yellow-300">Open →</span>
+                    {th(buttonKey)}
+                    <span className="block mt-6 text-yellow-300">{th("enter")} →</span>
                   </a>
                 ))}
               </div>

@@ -57,7 +57,7 @@ export default function LocaleBottomSheet({
   return (
     <div
       className={`fixed inset-0 z-50 ${
-        open ? "" : "pointer-events-none"
+        open ? "" : "pointer-events-none invisible"
       }`}
       aria-hidden={!open}
     >

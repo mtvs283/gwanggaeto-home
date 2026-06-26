@@ -1,0 +1,34 @@
+---
+description: Gwanggaeto homepage language identity and shell protection
+alwaysApply: true
+---
+
+# Gwanggaeto Language Identity
+
+광개토 홈페이지의 언어 역할을 절대 섞지 않는다.
+
+- 영어는 홈페이지 본체이자 브랜드 언어다.
+- 한국어는 학습 대상 언어다. 한국어 교육 사이트라고 해서 UI를 한국어 우선으로 바꾸지 않는다.
+- 24개 외국어는 학습자 도움 언어다. `ko`까지 포함한 개발상 locale 수와 서비스 표현을 혼동하지 않는다.
+- 사용자-facing 표현은 "24개 외국어 지원", "내 언어 도움", "선택 언어 안내", "한국어 중심 학습"을 우선한다.
+
+## Protected Homepage Shell
+
+사용자가 명시적으로 요청하지 않는 한 다음 영역은 수정하지 않는다.
+
+- 히어로 문구: `Interactive Korean Learning`, `Learn Korean`, `Through Experience`, `Explore Korean sounds...`
+- 히어로 CTA: `Enter the World`, `Start Hangeul`
+- 로고/브랜드 표기: `Onmaeum Korean`, `GWANGGAETO`
+- 홈페이지의 전체 껍데기, 배경, 고정 언어 토글 위치
+
+## Translation Rules
+
+- 히어로와 브랜드 문구는 영어 고정이다.
+- 학습 안내, 섹션 설명, 학습 카드, 자료실/공지/교실 안내는 선택 언어 하나만 표시한다.
+- 영어+선택 언어를 동시에 표시하지 않는다.
+- 실제 학습 페이지에서는 한국어를 중심에 두고, 초급에는 `내 언어 도움 끄기`처럼 도움 언어를 끄는 방식으로 설계한다.
+
+## Before Changing Language UX
+
+언어 토글, 히어로, 홈페이지 shell을 만질 때는 먼저 과거 정상 상태와 비교한다.
+전체 되돌리기보다 필요한 부분만 꺼내어 최신 기능과 합친다.

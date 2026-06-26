@@ -152,7 +152,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
         <img
           src="/images/main.png"
           alt="Gwanggaeto and Sejong"
-          className="absolute inset-0 h-full w-full object-cover object-center"
+          className="absolute inset-0 h-full w-full scale-105 object-cover object-[center_30%]"
         />
 
         <div className="absolute inset-0 bg-black/55" />
@@ -176,7 +176,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       <div className="absolute top-0 left-0 w-[40rem] h-[40rem] bg-yellow-400/10 blur-[160px] rounded-full" />
       <div className="absolute bottom-0 right-0 w-[35rem] h-[35rem] bg-amber-300/10 blur-[140px] rounded-full" />
 
-      {/* Navigation (fixed so the logo + language toggle float like the corner badges) */}
+      {/* Navigation (fixed so the logo floats like the corner badges) */}
       <header className="fixed left-0 right-0 top-0 z-40 flex items-center justify-between px-6 md:px-10 py-6">
         <a href="#top" className="block">
           <div className="text-stone-200 text-xs tracking-[0.4em] uppercase">
@@ -186,8 +186,6 @@ export default function GwanggaetoCinematicLobbyHomepage() {
             GWANGGAETO
           </div>
         </a>
-
-        <LocaleToggle />
       </header>
 
       {/* Main Lobby */}
@@ -217,6 +215,11 @@ export default function GwanggaetoCinematicLobbyHomepage() {
             <a href="#hangeul" className="px-10 py-4 rounded-2xl border border-white/30 bg-black/20 backdrop-blur-md hover:bg-white/10 transition duration-300 text-lg [@media(max-height:800px)]:px-8 [@media(max-height:800px)]:py-3 [@media(max-height:800px)]:text-base">
               Start Hangeul
             </a>
+          </div>
+
+          {/* Language Toggle (moved from top-right to center, under the CTA buttons) */}
+          <div className="flex justify-center pt-2 [@media(max-height:800px)]:pt-1">
+            <LocaleToggle />
           </div>
         </div>
       </main>

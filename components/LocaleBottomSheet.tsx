@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { LOCALES } from "@/lib/i18n";
 import { useLocaleContext } from "./LocaleProvider";
 
@@ -16,7 +17,13 @@ export default function LocaleBottomSheet({
   const { locale, setLocale } = useLocaleContext();
   const [dragY, setDragY] = useState(0);
   const [dragging, setDragging] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const startYRef = useRef<number | null>(null);
+
+  // Portal target is only available on the client.
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Close on Escape and lock body scroll while open.
   useEffect(() => {
@@ -54,9 +61,11 @@ export default function LocaleBottomSheet({
     }
   };
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <div
-      className={`fixed inset-0 z-50 ${
+      className={`fixed inset-0 z-[60] ${
         open ? "" : "pointer-events-none invisible"
       }`}
       aria-hidden={!open}
@@ -131,6 +140,7 @@ export default function LocaleBottomSheet({
           })}
         </ul>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

@@ -125,6 +125,8 @@ export default function GwanggaetoCinematicLobbyHomepage() {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-black text-white scroll-smooth">
+      {/* Language toggle: fixed floating button at the bottom-center (portaled). */}
+      <LocaleToggle />
       {/* Hero Background */}
       <div className="absolute left-0 top-0 h-screen w-full overflow-hidden">
         <img
@@ -195,10 +197,6 @@ export default function GwanggaetoCinematicLobbyHomepage() {
             </a>
           </div>
 
-          {/* Language Toggle (moved from top-right to center, under the CTA buttons) */}
-          <div className="flex justify-center pt-2 [@media(max-height:800px)]:pt-1">
-            <LocaleToggle />
-          </div>
         </div>
       </main>
 

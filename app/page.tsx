@@ -4,73 +4,63 @@ import { useTranslations } from "next-intl"
 import LocaleToggle from "@/components/LocaleToggle"
 
 function HomeLink() {
+  const thh = useTranslations("header")
   return (
     <a
       href="#top"
       className="inline-flex items-center justify-center rounded-full border border-white/15 bg-black/50 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-stone-200 backdrop-blur-md transition hover:border-yellow-300/50 hover:bg-yellow-300 hover:text-black"
     >
-      Home
+      {thh("navHome")}
     </a>
   )
 }
 
 export default function GwanggaetoCinematicLobbyHomepage() {
   const th = useTranslations("home")
-  // 영어 = 광개토 시각 정체성(제목/버튼 등 항상 영어 고정).
-  // 학습 내용은 th(...)가 선택된 로케일 언어(토글: 한국어 ⇄ 정한 모국어) 한 가지로 표시.
+  const thh = useTranslations("header")
+  // 히어로(제목/부제/CTA 버튼)는 광개토 시각 정체성으로 영어 고정.
+  // 그 외 학습 콘텐츠는 thh(섹션 제목)·th(설명)로 선택된 한 가지 언어만 표시.
 
   const worlds = [
     {
-      title: "Hangeul",
-      sub: "The Core Gateway",
-      desc: "All learning begins with Korean sounds and letters.",
-      ko: "한국어 소리와 글자부터 시작하세요.",
+      titleKey: "hangeul",
+      subKey: "coreGateway",
       koKey: "startKoreanSoundLetters",
       color: "from-yellow-950/90 to-black/90",
       href: "#hangeul",
       required: true,
     },
     {
-      title: "Study in Korea",
-      sub: "University & Campus Life",
-      desc: "Essential Korean for international students.",
-      ko: "대학 생활과 유학 생활에 필요한 한국어를 배웁니다.",
+      titleKey: "studyInKorea",
+      subKey: "campusLife",
       koKey: "schoolKoreanDesc",
       color: "from-blue-950/80 to-black/80",
       href: "#study",
     },
     {
-      title: "Work Korean",
-      sub: "Work & Factory Korean",
-      desc: "Korean for jobs, factories, and daily work life.",
-      ko: "일터와 생활 현장에서 바로 쓰는 한국어를 배웁니다.",
+      titleKey: "workKorean",
+      subKey: "workFactory",
       koKey: "workKoreanShortDesc",
       color: "from-red-950/80 to-black/80",
       href: "#work",
     },
     {
-      title: "Daily Korean",
-      sub: "Real Life Conversation",
-      desc: "Practice the Korean used in everyday situations.",
-      ko: "생활 속 실제 대화를 상황별로 연습합니다.",
+      titleKey: "dailyKorean",
+      subKey: "realLife",
       koKey: "dailyConversationDesc",
       color: "from-zinc-900/90 to-black/90",
       href: "#daily",
     },
     {
-      title: "Travel Korean",
-      sub: "Korea Survival Guide",
-      desc: "Taxi, restaurants, shopping, and transportation.",
-      ko: "택시, 식당, 쇼핑, 교통 표현을 익힙니다.",
+      titleKey: "travelKorean",
+      subKey: "survivalGuide",
       koKey: "travelExpressionDesc",
       color: "from-emerald-950/80 to-black/80",
       href: "#travel",
     },
     {
-      title: "Learning Plaza",
-      sub: "Resources & Community",
-      desc: "Class materials, notices, study guides, and live classroom links.",
-      ko: "학습 자료와 온라인 수업 입구를 한곳에서 확인하세요.",
+      titleKey: "learningPlaza",
+      subKey: "resourcesCommunity",
       koKey: "learningAccessDesc",
       color: "from-purple-950/80 to-black/80",
       href: "#plaza",
@@ -78,67 +68,55 @@ export default function GwanggaetoCinematicLobbyHomepage() {
   ]
 
   const hangeulButtons = [
-    { label: "Vowels App", ko: "모음 배우기", koKey: "learnVowels", href: "/hangeul/vowels" },
-    { label: "Consonants App", ko: "자음 배우기", koKey: "learnConsonants", href: "/hangeul/consonants" },
-    { label: "Syllable App", ko: "실라블 배우기", koKey: "learnSyllables", href: "/hangeul/syllables" },
-    { label: "Final Consonants App", ko: "받침 배우기", koKey: "learnFinalConsonants", href: "/hangeul/final-consonants" },
-    { label: "Hangeul Class", ko: "한글 기초반 신청", koKey: "applyHangeulBasic", href: "/apply/hangeul" },
+    { id: "vowels", koKey: "learnVowels", href: "/hangeul/vowels" },
+    { id: "consonants", koKey: "learnConsonants", href: "/hangeul/consonants" },
+    { id: "syllables", koKey: "learnSyllables", href: "/hangeul/syllables" },
+    { id: "final", koKey: "learnFinalConsonants", href: "/hangeul/final-consonants" },
+    { id: "class", koKey: "applyHangeulBasic", href: "/apply/hangeul" },
   ]
 
   const plazaButtons = [
-    { label: "Materials", ko: "자료실", koKey: "resources", href: "/materials" },
-    { label: "Notice", ko: "공지사항", koKey: "notices", href: "/notice" },
-    { label: "Community Board", ko: "게시판", koKey: "board", href: "/community" },
-    { label: "Class Application", ko: "강의 신청", koKey: "applyClass", href: "/apply" },
-    { label: "Enter Classroom", ko: "강의실 입장", koKey: "enterClassroom", href: "/classroom" },
-    { label: "Teacher & Institution", ko: "교사·기관 문의", koKey: "teacherInstitutionInquiry", href: "#teachers" },
+    { id: "materials", koKey: "resources", href: "/materials" },
+    { id: "notice", koKey: "notices", href: "/notice" },
+    { id: "community", koKey: "board", href: "/community" },
+    { id: "apply", koKey: "applyClass", href: "/apply" },
+    { id: "classroom", koKey: "enterClassroom", href: "/classroom" },
+    { id: "teachers", koKey: "teacherInstitutionInquiry", href: "#teachers" },
   ]
 
   const learningSections = [
     {
       id: "study",
-      eyebrow: "Study in Korea",
-      title: "University & Campus Korean",
-      koTitle: "유학 한국어",
+      eyebrowKey: "studyInKorea",
+      titleKey: "studyTitle",
       koTitleKey: "studyAbroadKorean",
-      desc: "Learn the Korean needed for campus life, school notices, departments, housing, and student services.",
-      koDesc: "대학 생활, 학교 공지, 학과, 기숙사, 학생 지원 서비스에 필요한 한국어를 배웁니다.",
       koDescKey: "schoolKoreanDesc",
       buttons: ["Campus Life", "School Notices", "Presentation Korean", "Study Guides"],
       color: "border-blue-300/20 bg-blue-950/20",
     },
     {
       id: "work",
-      eyebrow: "Work Korean",
-      title: "Korean for Work and Daily Jobs",
-      koTitle: "일터 한국어",
+      eyebrowKey: "workKorean",
+      titleKey: "workTitle",
       koTitleKey: "workKorean",
-      desc: "Practice workplace Korean for factories, schedules, safety, instructions, and real communication at work.",
-      koDesc: "공장, 일정, 안전, 업무 지시, 직장 생활 대화에 필요한 한국어를 연습합니다.",
       koDescKey: "workKoreanDesc",
       buttons: ["Factory Korean", "Safety Korean", "Work Dialogues", "EPS Practice"],
       color: "border-red-300/20 bg-red-950/20",
     },
     {
       id: "daily",
-      eyebrow: "Daily Korean",
-      title: "Real Life Conversation Practice",
-      koTitle: "생활 한국어",
+      eyebrowKey: "dailyKorean",
+      titleKey: "dailyTitle",
       koTitleKey: "dailyKorean",
-      desc: "Practice Korean for greetings, shopping, hospitals, banks, phone calls, and everyday problem solving.",
-      koDesc: "인사, 쇼핑, 병원, 은행, 전화, 일상 문제 해결 표현을 상황별로 배웁니다.",
       koDescKey: "dailyKoreanDesc",
       buttons: ["Conversation", "Role Play", "Listening", "Word Cards"],
       color: "border-stone-300/20 bg-stone-900/40",
     },
     {
       id: "travel",
-      eyebrow: "Travel Korean",
-      title: "Korea Survival Guide",
-      koTitle: "여행 한국어",
+      eyebrowKey: "travelKorean",
+      titleKey: "survivalGuide",
       koTitleKey: "travelKorean",
-      desc: "Learn the Korean you need for taxis, restaurants, shopping, directions, transportation, and travel emergencies.",
-      koDesc: "택시, 식당, 쇼핑, 길 찾기, 교통, 여행 중 긴급 상황 표현을 배웁니다.",
       koDescKey: "travelKoreanDesc",
       buttons: ["Taxi", "Restaurant", "Shopping", "Transportation"],
       color: "border-emerald-300/20 bg-emerald-950/20",
@@ -188,7 +166,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
         </a>
       </header>
 
-      {/* Main Lobby */}
+      {/* Main Lobby — 히어로는 영어 고정 */}
       <main id="top" className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 pt-20 pb-8 text-center">
         <div className="max-w-4xl translate-y-10 space-y-5 backdrop-blur-[2px] [@media(max-height:800px)]:translate-y-6 [@media(max-height:800px)]:space-y-3">
           <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-white/20 bg-black/20 backdrop-blur-md text-sm tracking-[0.25em] uppercase text-stone-200 [@media(max-height:800px)]:py-1.5 [@media(max-height:800px)]:text-xs">
@@ -242,10 +220,10 @@ export default function GwanggaetoCinematicLobbyHomepage() {
 
           <div className="text-center mb-7 pt-8 [@media(max-height:800px)]:mb-4 [@media(max-height:800px)]:pt-6">
             <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-yellow-300/30 bg-black/30 backdrop-blur-md text-xs tracking-[0.25em] uppercase text-yellow-200 mb-4 [@media(max-height:800px)]:mb-2 [@media(max-height:800px)]:py-1.5">
-              Learning Gateways
+              {thh("gatewaysEyebrow")}
             </div>
             <h2 className="text-4xl md:text-5xl font-black text-white drop-shadow-2xl [@media(max-height:800px)]:text-4xl">
-              Select Your Korean World
+              {thh("gatewaysTitle")}
             </h2>
           </div>
 
@@ -261,31 +239,27 @@ export default function GwanggaetoCinematicLobbyHomepage() {
                 <div className="relative z-10 flex flex-col justify-between h-full">
                   <div>
                     <div className="text-sm uppercase tracking-[0.25em] text-yellow-200 mb-2 [@media(max-height:800px)]:mb-1.5 [@media(max-height:800px)]:text-xs">
-                      {world.sub}
+                      {thh(world.subKey)}
                     </div>
 
                     <h2 className="text-2xl md:text-[1.7rem] font-black leading-tight mb-2 [@media(max-height:800px)]:mb-1.5 [@media(max-height:800px)]:text-2xl">
-                      {world.title}
+                      {thh(world.titleKey)}
                     </h2>
 
-                    <p className="text-stone-300 text-sm leading-relaxed [@media(max-height:800px)]:text-xs">
-                      {world.desc}
-                    </p>
-
-                    <p className="mt-2 text-stone-200 text-sm leading-relaxed [@media(max-height:800px)]:hidden">
+                    <p className="text-stone-200 text-sm leading-relaxed [@media(max-height:800px)]:text-xs">
                       {th(world.koKey)}
                     </p>
 
                     {world.required && (
                       <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-yellow-400/30 bg-yellow-500/10 px-4 py-2 text-xs tracking-[0.2em] uppercase text-yellow-300 [@media(max-height:800px)]:hidden">
-                        Required First Step
+                        {th("essentialLearning")}
                       </div>
                     )}
                   </div>
 
                   <div className="flex items-center justify-between pt-4 [@media(max-height:800px)]:pt-2.5">
                     <span className="text-yellow-300 font-semibold [@media(max-height:800px)]:text-sm">
-                      Enter
+                      {th("enter")}
                     </span>
 
                     <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-yellow-300 group-hover:text-black transition duration-300 [@media(max-height:800px)]:h-9 [@media(max-height:800px)]:w-9">
@@ -312,28 +286,21 @@ export default function GwanggaetoCinematicLobbyHomepage() {
 
           <div className="relative z-10 max-w-3xl">
             <div className="text-yellow-200 text-sm tracking-[0.3em] uppercase mb-4">
-              Hangeul 한글 배우기
+              {thh("hangeulEyebrow")}
             </div>
             <h2 className="text-4xl md:text-5xl font-black mb-4">
-              Start with Korean sounds and letters.
-            </h2>
-            <p className="text-lg text-stone-200 leading-relaxed mb-3">
               {th("startKoreanSoundLetters")}
-            </p>
-            <p className="text-stone-300 leading-relaxed">
-              Learn Korean letters through vowels, consonants, syllables, final consonants, and word cards.
-            </p>
+            </h2>
           </div>
 
           <div className="relative z-10 grid sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-8">
             {hangeulButtons.map((item) => (
               <a
-                key={item.label}
+                key={item.id}
                 href={item.href}
                 className="rounded-2xl border border-yellow-300/20 bg-yellow-300/10 hover:bg-yellow-300 hover:text-black transition duration-300 p-5 min-h-28 flex flex-col justify-between"
               >
-                <span className="text-lg font-bold">{item.label}</span>
-                <span className="text-sm opacity-80">{th(item.koKey)}</span>
+                <span className="text-lg font-bold">{th(item.koKey)}</span>
               </a>
             ))}
           </div>
@@ -351,17 +318,14 @@ export default function GwanggaetoCinematicLobbyHomepage() {
             <div className="grid lg:grid-cols-[1fr_1.2fr] gap-10 items-center">
               <div>
                 <div className="text-yellow-200 text-sm tracking-[0.3em] uppercase mb-4">
-                  {section.eyebrow}
+                  {thh(section.eyebrowKey)}
                 </div>
                 <h2 className="text-4xl md:text-6xl font-black mb-4">
-                  {section.title}
+                  {thh(section.titleKey)}
                 </h2>
                 <div className="text-2xl text-yellow-200 font-bold mb-6">
                   {th(section.koTitleKey)}
                 </div>
-                <p className="text-stone-300 leading-relaxed mb-4">
-                  {section.desc}
-                </p>
                 <p className="text-stone-200 leading-relaxed">
                   {th(section.koDescKey)}
                 </p>
@@ -397,28 +361,27 @@ export default function GwanggaetoCinematicLobbyHomepage() {
 
           <div className="relative z-10 max-w-4xl">
             <div className="text-purple-200 text-sm tracking-[0.3em] uppercase mb-4">
-              Learning Plaza 학습 광장
+              {thh("learningPlaza")}
             </div>
             <h2 className="text-4xl md:text-5xl font-black mb-4">
-              Materials, Community, and Live Classes
+              {thh("plazaTitle")}
             </h2>
             <p className="text-xl text-stone-200 leading-relaxed mb-4">
               {th("plazaItems")}
             </p>
             <p className="text-stone-300 leading-relaxed">
-              Find study materials, notices, class applications, and live classroom links.
+              {th("plazaDesc")}
             </p>
           </div>
 
           <div className="relative z-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
             {plazaButtons.map((item) => (
               <a
-                key={item.label}
+                key={item.id}
                 href={item.href}
                 className="rounded-2xl border border-purple-300/20 bg-white/5 hover:bg-purple-300 hover:text-black transition duration-300 p-5 min-h-28 flex flex-col justify-between"
               >
-                <span className="text-xl font-bold">{item.label}</span>
-                <span className="text-sm opacity-80">{th(item.koKey)}</span>
+                <span className="text-xl font-bold">{th(item.koKey)}</span>
               </a>
             ))}
           </div>
@@ -435,28 +398,28 @@ export default function GwanggaetoCinematicLobbyHomepage() {
           <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
             <div>
               <div className="text-yellow-200 text-sm tracking-[0.3em] uppercase mb-4">
-                Teachers &amp; Institutions
+                {thh("teachersEyebrow")}
               </div>
               <h2 className="text-4xl md:text-6xl font-black mb-6">
-                Korean Education AI Research &amp; Development Institute
+                {thh("teachersTitle")}
               </h2>
               <p className="text-xl text-stone-200 leading-relaxed mb-4">
                 {th("aiInstituteSection")}
               </p>
               <p className="text-stone-300 leading-relaxed">
-                Connect teacher collaboration, institutional partnership, content licensing, and AI Korean education tools from here.
+                {th("aiInstituteDesc")}
               </p>
             </div>
 
             <div className="grid gap-4">
               <a href="/teachers" className="rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition duration-300 p-6 font-bold">
-                Teacher Portal / 교사 포털 →
+                {th("teacherPortal")} →
               </a>
               <a href="/institutions" className="rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition duration-300 p-6 font-bold">
-                Institution Partnership / 기관 제휴 →
+                {th("institutionPartnership")} →
               </a>
               <a href="/license" className="rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition duration-300 p-6 font-bold">
-                License Inquiry / 라이선스 문의 →
+                {th("licenseInquiry")} →
               </a>
             </div>
           </div>
@@ -472,17 +435,17 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       {/* Floating Seal → 집현전 약방 */}
       <a
         href="https://yakbang-two.vercel.app/"
-        aria-label="집현전 약방으로 가기"
-        title="집현전 약방"
+        aria-label="Jiphyeonjeon Yakbang"
+        title="Jiphyeonjeon Yakbang"
         className="group fixed bottom-8 right-8 z-30 block transition duration-500 hover:scale-110"
       >
         <img
           src="/images/stamp_onmaeum.png"
-          alt="집현전 약방 도장"
+          alt="Onmaeum seal"
           className="w-24 rotate-6 opacity-90 group-hover:opacity-100"
         />
         <span className="absolute -top-9 right-0 whitespace-nowrap rounded-lg bg-black/75 px-3 py-1.5 text-sm font-bold text-yellow-300 opacity-0 backdrop-blur transition duration-300 group-hover:opacity-100">
-          집현전 약방으로 →
+          {th("goJiphyeonjeonYakbang")}
         </span>
       </a>
 
@@ -497,7 +460,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
         </div>
 
         <div className="absolute -top-12 left-0 opacity-0 group-hover:opacity-100 transition duration-300 bg-black/70 backdrop-blur-md px-4 py-2 rounded-xl text-sm whitespace-nowrap">
-          Welcome to Gwanggaeto
+          {th("welcomeGwanggaeto")}
         </div>
       </div>
     </div>

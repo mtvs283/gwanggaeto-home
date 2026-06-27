@@ -87,15 +87,9 @@ export default function GwanggaetoTeaserPage() {
 
       <LocaleToggle />
 
-      {/* 히어로 배경 — 아래까지 보이도록 밝기를 조금 살림 */}
-      <div className="fixed inset-0 overflow-hidden">
-        <img
-          src="/images/main.png"
-          alt="Gwanggaeto and Sejong"
-          className="absolute inset-0 h-full w-full scale-105 object-cover object-[center_30%]"
-        />
-        <div className="absolute inset-0 bg-black/35" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/10" />
+      {/* 까만 화면에 티저만 혼자 — 홈 히어로는 비치지 않음 */}
+      <div className="fixed inset-0 overflow-hidden bg-black">
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0b0a07] to-black" />
       </div>
 
       {/* 은은한 금색 글로우 */}

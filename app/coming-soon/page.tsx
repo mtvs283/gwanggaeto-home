@@ -1,18 +1,27 @@
 "use client"
 
 import type { FormEvent } from "react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useTranslations } from "next-intl"
 import LocaleToggle from "@/components/LocaleToggle"
+import { useLocaleContext } from "@/components/LocaleProvider"
+import { LOCALE_STORAGE_KEY } from "@/lib/i18n"
 
-const releaseWindows = [
-  { date: "8.15", label: "첫 문이 열릴 수도" },
-  { date: "9.01", label: "정식 행군 준비" },
-  { date: "9.24", label: "추석 전후 최종 관문" },
-]
+const YAKBANG_URL = "https://yakbang-two.vercel.app/"
 
 export default function GwanggaetoTeaserPage() {
+  const th = useTranslations("home")
+  const { setLocale } = useLocaleContext()
   const [email, setEmail] = useState("")
   const [submitted, setSubmitted] = useState(false)
+
+  useEffect(() => {
+    try {
+      if (!window.localStorage.getItem(LOCALE_STORAGE_KEY)) setLocale("en")
+    } catch {
+      setLocale("en")
+    }
+  }, [setLocale])
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -23,85 +32,89 @@ export default function GwanggaetoTeaserPage() {
 
   return (
     <div id="top" className="relative min-h-screen overflow-hidden bg-black text-white">
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Monoton&family=Nanum+Myeongjo:wght@700;800&display=swap');
+
+        @font-face {
+          font-family: 'ShillaCulture';
+          src: url('/fonts/Shilla_Culture-Bold.ttf') format('truetype');
+          font-weight: 700;
+          font-display: swap;
+        }
+
+        @keyframes neonPulse {
+          0%, 100% {
+            text-shadow:
+              0 0 6px rgba(255,255,255,0.85),
+              0 0 16px rgba(253,224,71,0.9),
+              0 0 36px rgba(245,158,11,0.85),
+              0 0 70px rgba(245,158,11,0.7);
+          }
+          45% {
+            text-shadow:
+              0 0 5px rgba(255,255,255,0.7),
+              0 0 12px rgba(253,224,71,0.75),
+              0 0 26px rgba(245,158,11,0.7),
+              0 0 52px rgba(245,158,11,0.55);
+          }
+          47% { opacity: 0.82; }
+          48% { opacity: 1; }
+        }
+
+        @keyframes sealFloat {
+          0%, 100% { transform: translateY(0) rotate(-4deg); }
+          50% { transform: translateY(-10px) rotate(-4deg); }
+        }
+
+        .neon-ko {
+          font-family: 'ShillaCulture', 'Black Han Sans', sans-serif;
+          font-weight: 700;
+          color: #fffbe8;
+          letter-spacing: 0.04em;
+          animation: neonPulse 3.6s ease-in-out infinite;
+        }
+        .neon-en {
+          font-family: 'Monoton', cursive;
+          color: #fde68a;
+          letter-spacing: 0.12em;
+          text-shadow:
+            0 0 6px rgba(253,224,71,0.8),
+            0 0 18px rgba(245,158,11,0.7),
+            0 0 40px rgba(245,158,11,0.5);
+        }
+        .serif-ko { font-family: 'ShillaCulture', 'Nanum Myeongjo', serif; }
+      `}</style>
+
       <LocaleToggle />
 
+      {/* 히어로 배경 — 아래까지 보이도록 밝기를 조금 살림 */}
       <div className="fixed inset-0 overflow-hidden">
         <img
           src="/images/gwanggaeto_hero.png"
           alt="Gwanggaeto and Sejong"
-          className="absolute inset-0 h-full w-full scale-105 object-cover object-[center_30%]"
+          className="absolute inset-0 h-full w-full scale-105 object-cover object-[center_28%]"
         />
-        <div className="absolute inset-0 bg-black/85" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/25" />
+        <div className="absolute inset-0 bg-black/25" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10" />
       </div>
 
-      <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_60%)]" />
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[12%] left-[18%] text-yellow-200/30 text-5xl animate-pulse">ㄱ</div>
-        <div className="absolute top-[22%] right-[20%] text-yellow-300/20 text-6xl animate-bounce">ㅇ</div>
-        <div className="absolute top-[38%] left-[8%] text-white/15 text-4xl animate-pulse">ㅁ</div>
-        <div className="absolute top-[48%] right-[12%] text-yellow-100/20 text-5xl animate-pulse">ㅅ</div>
-        <div className="absolute bottom-[32%] left-[24%] text-yellow-300/20 text-7xl animate-bounce">ㅣ</div>
-        <div className="absolute bottom-[20%] right-[28%] text-white/10 text-5xl animate-pulse">ㆍ</div>
-      </div>
+      {/* 은은한 금색 글로우 */}
+      <div className="pointer-events-none absolute -top-24 left-1/2 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-amber-400/10 blur-[150px]" />
+      <div className="pointer-events-none absolute bottom-0 right-0 h-[28rem] w-[28rem] rounded-full bg-yellow-300/10 blur-[130px]" />
 
-      <div className="absolute top-0 left-0 w-[40rem] h-[40rem] bg-yellow-400/10 blur-[160px] rounded-full" />
-      <div className="absolute bottom-0 right-0 w-[35rem] h-[35rem] bg-amber-300/10 blur-[140px] rounded-full" />
+      <main className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 pb-28 pt-24 text-center">
+        <div className="max-w-4xl space-y-6">
+          <h1 className="neon-ko text-7xl leading-none md:text-9xl">광개토</h1>
 
-      <header className="fixed left-0 right-0 top-0 z-40 flex items-center justify-between px-6 py-6 md:px-10">
-        <div>
-          <div className="text-stone-200 text-xs tracking-[0.4em] uppercase">
-            Onmaeum Korean
-          </div>
-          <div className="text-3xl md:text-5xl font-black tracking-[0.2em] text-white">
-            GWANGGAETO
-          </div>
-        </div>
-      </header>
+          <p className="neon-en text-3xl md:text-5xl">GWANGGAETO</p>
 
-      <main className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 pb-10 pt-28 text-center">
-        <div className="max-w-5xl space-y-8 backdrop-blur-[1px]">
-          <div className="inline-flex items-center gap-3 rounded-full border border-yellow-400/25 bg-black/35 px-5 py-2 text-sm uppercase tracking-[0.25em] text-yellow-300 backdrop-blur-md">
-            곧 문이 열릴 것이오
-          </div>
-
-          <h1
-            className="-rotate-6 text-7xl leading-none text-yellow-300 drop-shadow-2xl md:text-9xl"
-            style={{
-              fontFamily: "\"ShillaCulture\", serif",
-              textShadow: "0 4px 40px rgba(251, 191, 36, 0.45)",
-            }}
-          >
-            광개토
-          </h1>
-
-          <p className="-rotate-2 font-serif text-4xl italic tracking-[0.08em] text-amber-400 md:text-6xl">
-            GWANGGAETO
+          <p className="serif-ko mx-auto max-w-2xl text-lg tracking-[0.12em] text-amber-100/95 md:text-2xl">
+            {th("teaserWindow")}
           </p>
-
-          <p className="mx-auto max-w-2xl -rotate-1 text-lg leading-relaxed text-stone-300 md:text-xl">
-            약방에서 모은 영수증과 뭉치의 성장.
-            <br />
-            그 모든 것이 광개토에서 펼쳐집니다.
-            <br />
-            지금은 문을 닫고, 게임인 척 준비 중이오.
-          </p>
-
-          <div className="mx-auto grid max-w-2xl gap-3 sm:grid-cols-3">
-            {releaseWindows.map((item) => (
-              <div
-                key={item.date}
-                className="rounded-2xl border border-yellow-300/20 bg-black/35 p-4 backdrop-blur-md"
-              >
-                <div className="text-2xl font-black text-yellow-300">{item.date}</div>
-                <div className="mt-1 text-xs leading-relaxed text-stone-300">{item.label}</div>
-              </div>
-            ))}
-          </div>
 
           <form
             onSubmit={handleSubmit}
-            className="mx-auto flex w-full max-w-md -rotate-1 flex-col gap-3 sm:flex-row"
+            className="mx-auto mt-2 flex w-full max-w-md flex-col gap-3 sm:flex-row"
           >
             <input
               type="email"
@@ -109,63 +122,43 @@ export default function GwanggaetoTeaserPage() {
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               required
-              className="flex-1 rounded-xl border border-yellow-300/30 bg-black/50 px-5 py-3 text-white placeholder-stone-500 backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-yellow-300"
+              className="flex-1 rounded-full border border-yellow-300/30 bg-black/50 px-5 py-3 text-white placeholder-stone-500 backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-yellow-300"
             />
             <button
               type="submit"
-              className="rounded-xl bg-yellow-400 px-8 py-3 font-bold text-black transition hover:bg-yellow-300"
+              className="rounded-full bg-yellow-400 px-8 py-3 font-bold text-black transition hover:bg-yellow-300"
             >
-              알림 받기
+              {th("teaserNotify")}
             </button>
           </form>
 
-          {submitted && (
-            <p className="text-sm text-yellow-300 animate-pulse">
-              알림 등록이 완료되었소.
-            </p>
+          {submitted ? (
+            <p className="text-sm text-yellow-300">{th("teaserSubmitted")}</p>
+          ) : (
+            <p className="text-xs text-stone-300">{th("teaserFirstNotice")}</p>
           )}
-
-          <p className="text-xs text-stone-400">
-            광개토 오픈 시 가장 먼저 알려드리겠소.
-          </p>
         </div>
       </main>
 
+      {/* 곧 문이 열릴 것이오 — 작은 뱃지 */}
+      <div className="fixed left-1/2 top-20 z-30 -translate-x-1/2 rounded-full border border-yellow-400/30 bg-black/45 px-4 py-1.5 text-xs uppercase tracking-[0.25em] text-yellow-300 backdrop-blur-md">
+        {th("teaserComingSoon")}
+      </div>
+
+      {/* 도장 — 앞으로, 누르면 약방으로 */}
       <a
-        href="https://yakbang-two.vercel.app/"
-        className="fixed bottom-8 right-8 z-30 transition duration-500 hover:scale-110"
-        aria-label="약방광개토로 돌아가기"
+        href={YAKBANG_URL}
+        aria-label="Return"
+        title="Return"
+        className="group fixed bottom-8 right-8 z-50 block"
+        style={{ animation: "sealFloat 4s ease-in-out infinite" }}
       >
         <img
           src="/images/stamp_gwanggaeto_yakbang.png"
           alt="광개토 약방 인장"
-          className="w-24 rotate-6 opacity-80 md:w-28"
+          className="w-28 drop-shadow-[0_0_18px_rgba(245,158,11,0.45)] transition duration-500 group-hover:scale-110 md:w-32"
         />
       </a>
-
-      <div className="fixed left-5 bottom-5 z-30 group cursor-pointer">
-        <div className="relative w-24 h-24 rounded-full overflow-hidden border border-white/20 bg-black/40 backdrop-blur-md hover:scale-105 transition duration-300">
-          <img
-            src="/images/moongchi_stickers.png"
-            alt="Moongchi"
-            className="w-full h-full object-cover"
-          />
-        </div>
-
-        <div className="absolute -top-12 left-0 opacity-0 group-hover:opacity-100 transition duration-300 bg-black/70 backdrop-blur-md px-4 py-2 rounded-xl text-sm whitespace-nowrap">
-          문지기 뭉치가 준비 중
-        </div>
-      </div>
-
-      <footer className="relative z-10 border-t border-white/5 bg-black/80 px-6 py-8 text-center text-stone-500">
-        <div className="mb-2 text-xl font-black tracking-[0.25em] text-white">GWANGGAETO</div>
-        <div className="text-sm">Onmaeum Korean</div>
-        <div className="mt-4 text-xs">
-          <a href="https://yakbang-two.vercel.app/" className="text-yellow-300 hover:underline">
-            약방광개토로 돌아가기
-          </a>
-        </div>
-      </footer>
     </div>
   )
 }

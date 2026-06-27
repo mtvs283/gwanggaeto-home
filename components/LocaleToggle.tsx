@@ -25,7 +25,7 @@ export default function LocaleToggle() {
       aria-haspopup="dialog"
       aria-expanded={open}
       aria-label={`Change language (current: ${current.label})`}
-      className="fixed bottom-6 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2 rounded-full border border-white/15 bg-black/60 px-4 py-2 text-sm text-white shadow-xl backdrop-blur-md transition hover:border-yellow-300/50 hover:bg-white/15"
+      className="fixed bottom-6 left-1/2 z-[70] flex -translate-x-1/2 items-center gap-2 rounded-full border border-white/15 bg-black/60 px-4 py-2 text-sm text-white shadow-xl backdrop-blur-md transition hover:border-yellow-300/50 hover:bg-white/15"
     >
       <span className="text-lg leading-none">{current.flag}</span>
       <span className="font-semibold tracking-wide">{current.label}</span>

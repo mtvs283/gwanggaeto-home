@@ -90,12 +90,12 @@ export default function GwanggaetoTeaserPage() {
       {/* 히어로 배경 — 아래까지 보이도록 밝기를 조금 살림 */}
       <div className="fixed inset-0 overflow-hidden">
         <img
-          src="/images/gwanggaeto_hero.png"
+          src="/images/main.png"
           alt="Gwanggaeto and Sejong"
-          className="absolute inset-0 h-full w-full scale-105 object-cover object-[center_28%]"
+          className="absolute inset-0 h-full w-full scale-105 object-cover object-[center_30%]"
         />
-        <div className="absolute inset-0 bg-black/25" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10" />
+        <div className="absolute inset-0 bg-black/35" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/10" />
       </div>
 
       {/* 은은한 금색 글로우 */}

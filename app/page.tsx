@@ -432,7 +432,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
 
       {/* Floating Seal → 광개토약방 */}
       <a
-        href="https://yakbang-two.vercel.app/"
+        href="https://xn--vh3bp4o.kr/"
         aria-label="GWANGGAETO YAKBANG"
         title="GWANGGAETO YAKBANG"
         className="group fixed bottom-8 right-8 z-30 block transition duration-500 hover:scale-110"

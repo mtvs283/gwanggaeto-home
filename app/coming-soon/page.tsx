@@ -7,7 +7,8 @@ import LocaleToggle from "@/components/LocaleToggle"
 import { useLocaleContext } from "@/components/LocaleProvider"
 import { LOCALE_STORAGE_KEY } from "@/lib/i18n"
 
-const YAKBANG_URL = "https://yakbang-two.vercel.app/"
+// 한글 도메인(약방.kr)은 href에서 punycode로 넣어야 안전하게 열린다
+const YAKBANG_URL = "https://xn--vh3bp4o.kr/"
 
 export default function GwanggaetoTeaserPage() {
   const th = useTranslations("home")

@@ -69,7 +69,7 @@ const qaPosts = [
 const freePosts = [
   {
     id: 1, nick: "jk_learns", initials: "JK", date: "06.09",
-    body: "Finally passed TOPIK II! 드디어 토픽 2급 합격했어요 🎉 Studying with Gwanggaeto materials really helped.",
+    body: "Finally passed TOPIK II! 드디어 토픽 2급 합격했어요 🎉 Studying with GWANGGAETO materials really helped.",
     comments: [
       { nick: "sara_kr", text: "Congratulations!! 축하해요!" },
       { nick: "민준", text: "대단해요~ which materials did you use?" },

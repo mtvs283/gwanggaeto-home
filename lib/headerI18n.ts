@@ -1,6 +1,6 @@
 // Header / title strings for the home page sections and cards.
 // Keyed by the exact app locale code (so no extra mapping is needed).
-// Proper nouns (Gwanggaeto, AI) are kept as-is. These translations are
+// Proper nouns (GWANGGAETO, AI) are kept as-is. These translations are
 // machine-generated and should get a native-speaker review pass.
 
 export const headerI18n = {

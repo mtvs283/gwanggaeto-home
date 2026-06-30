@@ -131,7 +131,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       <div className="absolute left-0 top-0 h-screen w-full overflow-hidden">
         <img
           src="/images/main.png"
-          alt="Gwanggaeto and Sejong"
+          alt="GWANGGAETO and Sejong"
           className="absolute inset-0 h-full w-full scale-105 object-cover object-[center_30%]"
         />
 
@@ -430,20 +430,20 @@ export default function GwanggaetoCinematicLobbyHomepage() {
         <div>Onmaeum Korean · Korean Education AI Research & Development Institute</div>
       </footer>
 
-      {/* Floating Seal → 집현전 약방 */}
+      {/* Floating Seal → 광개토약방 */}
       <a
         href="https://yakbang-two.vercel.app/"
-        aria-label="Jiphyeonjeon Yakbang"
-        title="Jiphyeonjeon Yakbang"
+        aria-label="GWANGGAETO YAKBANG"
+        title="GWANGGAETO YAKBANG"
         className="group fixed bottom-8 right-8 z-30 block transition duration-500 hover:scale-110"
       >
         <img
           src="/images/stamp_gwanggaeto_yakbang.png"
-          alt="Gwanggaeto Yakbang seal"
+          alt="GWANGGAETO YAKBANG seal"
           className="w-24 rotate-6 opacity-90 group-hover:opacity-100"
         />
         <span className="absolute -top-9 right-0 whitespace-nowrap rounded-lg bg-black/75 px-3 py-1.5 text-sm font-bold text-yellow-300 opacity-0 backdrop-blur transition duration-300 group-hover:opacity-100">
-          {th("goJiphyeonjeonYakbang")}
+          {th("goYakbang")}
         </span>
       </a>
 

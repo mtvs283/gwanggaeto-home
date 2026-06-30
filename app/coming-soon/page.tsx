@@ -11,7 +11,7 @@ const YAKBANG_URL = "https://yakbang-two.vercel.app/"
 
 export default function GwanggaetoTeaserPage() {
   const th = useTranslations("home")
-  const { setLocale } = useLocaleContext()
+  const { locale, setLocale } = useLocaleContext()
   const [email, setEmail] = useState("")
   const [submitted, setSubmitted] = useState(false)
 
@@ -33,7 +33,7 @@ export default function GwanggaetoTeaserPage() {
   return (
     <div id="top" className="relative min-h-screen overflow-hidden bg-black text-white">
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Monoton&family=Nanum+Myeongjo:wght@700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Monoton&family=Nanum+Myeongjo:wght@700;800&family=Noto+Sans:ital,wght@0,400;0,700;1,400&family=Noto+Sans+Arabic:wght@400;700&family=Noto+Sans+Bengali:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&family=Noto+Sans+Khmer:wght@400;700&family=Noto+Sans+Myanmar:wght@400;700&family=Noto+Sans+Thai:wght@400;700&display=swap');
 
         @font-face {
           font-family: 'ShillaCulture';
@@ -82,7 +82,12 @@ export default function GwanggaetoTeaserPage() {
             0 0 18px rgba(245,158,11,0.7),
             0 0 40px rgba(245,158,11,0.5);
         }
-        .serif-ko { font-family: 'ShillaCulture', 'Nanum Myeongjo', serif; }
+        .teaser-tagline-ko {
+          font-family: 'ShillaCulture', 'Nanum Myeongjo', serif;
+        }
+        .teaser-i18n {
+          font-family: 'Noto Sans', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'Noto Sans Thai', 'Noto Sans Myanmar', 'Noto Sans Khmer', 'Noto Sans Bengali', system-ui, sans-serif;
+        }
       `}</style>
 
       <LocaleToggle />
@@ -102,13 +107,15 @@ export default function GwanggaetoTeaserPage() {
 
           <p className="neon-en text-3xl md:text-5xl">GWANGGAETO</p>
 
-          <p className="serif-ko mx-auto max-w-2xl text-lg tracking-[0.12em] text-amber-100/95 md:text-2xl">
+          <p
+            className={`mx-auto max-w-2xl text-lg tracking-[0.12em] text-amber-100/95 md:text-2xl ${locale === "ko" ? "teaser-tagline-ko" : "teaser-i18n"}`}
+          >
             {th("teaserWindow")}
           </p>
 
           <form
             onSubmit={handleSubmit}
-            className="mx-auto mt-2 flex w-full max-w-md flex-col gap-3 sm:flex-row"
+            className="teaser-i18n mx-auto mt-2 flex w-full max-w-md flex-col gap-3 sm:flex-row"
           >
             <input
               type="email"
@@ -127,15 +134,15 @@ export default function GwanggaetoTeaserPage() {
           </form>
 
           {submitted ? (
-            <p className="text-sm text-yellow-300">{th("teaserSubmitted")}</p>
+            <p className="teaser-i18n text-sm text-yellow-300">{th("teaserSubmitted")}</p>
           ) : (
-            <p className="text-xs text-stone-300">{th("teaserFirstNotice")}</p>
+            <p className="teaser-i18n text-xs text-stone-300">{th("teaserFirstNotice")}</p>
           )}
         </div>
       </main>
 
       {/* 곧 문이 열릴 것이오 — 작은 뱃지 */}
-      <div className="fixed left-1/2 top-20 z-30 -translate-x-1/2 rounded-full border border-yellow-400/30 bg-black/45 px-4 py-1.5 text-xs uppercase tracking-[0.25em] text-yellow-300 backdrop-blur-md">
+      <div className="teaser-i18n fixed left-1/2 top-20 z-30 -translate-x-1/2 rounded-full border border-yellow-400/30 bg-black/45 px-4 py-1.5 text-xs tracking-[0.15em] text-yellow-300 backdrop-blur-md">
         {th("teaserComingSoon")}
       </div>
 

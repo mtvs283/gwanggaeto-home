@@ -35,7 +35,7 @@ export const homeI18nPart3 = {
     licenseInquiry: "Лицензия суроосу",
     welcomeGwanggaeto: "GWANGGAETOго кош келиңиз.",
     goYakbang: "GWANGGAETO YAKBANGга →",
-    teaserWindow: "Корей тилиңиз ачылган терезе",
+    teaserWindow: "Корей тилиңизге ачылган терезе",
     teaserComingSoon: "Дарбаза жакында ачылат",
     teaserNotify: "Билдирүү алуу",
     teaserSubmitted: "Сиз билдирүү тизмесиндесиз.",

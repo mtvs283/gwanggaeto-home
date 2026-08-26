@@ -4,7 +4,7 @@ import JamoAppFrame from "@/components/JamoAppFrame";
 import { JAMO_HANGEUL_MODULES, isJamoHangeulModule } from "@/lib/jamoApp";
 
 export const metadata: Metadata = {
-  title: "GWANGGAETO™ Jamo | Hangeul",
+  title: "GWANGGAETO Jamo | Hangeul",
   description: "Learn Hangul letters through the GWANGGAETO jamo app.",
 };
 

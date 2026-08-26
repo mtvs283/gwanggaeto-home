@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl"
 import BrandMark from "@/components/BrandMark"
 import LocaleToggle from "@/components/LocaleToggle"
+import PatentPendingNotice from "@/components/PatentPendingNotice"
 
 function HomeLink() {
   const thh = useTranslations("header")
@@ -428,6 +429,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       <footer className="relative z-10 border-t border-white/10 bg-black/80 px-6 py-10 text-center text-stone-400">
         <BrandMark className="mb-3 block text-2xl font-black tracking-[0.25em] text-white" />
         <div>Onmaeum Korean · Korean Education AI Research & Development Institute</div>
+        <PatentPendingNotice className="mt-3 text-xs tracking-normal text-stone-500" />
       </footer>
 
       {/* Floating Seal → 광개토약방 */}

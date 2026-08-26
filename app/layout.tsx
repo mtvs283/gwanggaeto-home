@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "광개토™ | 한국어 학습",
+  title: "광개토 | 한국어 학습",
   description: "AI 기반 한국어 학습 플랫폼",
 };
 

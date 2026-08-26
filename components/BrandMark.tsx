@@ -1,9 +1,4 @@
-/** Wordmark with application-only trademark (™), not registered (®). */
+/** Homepage / jamo chrome wordmark. English brand spelling is fixed. */
 export default function BrandMark({ className }: { className?: string }) {
-  return (
-    <span className={className}>
-      GWANGGAETO
-      <sup className="ml-[0.06em] text-[0.38em] font-semibold tracking-normal">™</sup>
-    </span>
-  );
+  return <span className={className}>GWANGGAETO</span>;
 }

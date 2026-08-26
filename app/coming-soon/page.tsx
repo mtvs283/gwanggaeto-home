@@ -104,9 +104,13 @@ export default function GwanggaetoTeaserPage() {
 
       <main className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 pb-28 pt-24 text-center">
         <div className="max-w-4xl space-y-6">
-          <h1 className="neon-ko text-7xl leading-none md:text-9xl">광개토</h1>
+          <h1 className="neon-ko text-7xl leading-none md:text-9xl">
+            광개토<sup className="ml-[0.04em] text-[0.28em] font-semibold tracking-normal">™</sup>
+          </h1>
 
-          <p className="neon-en text-3xl md:text-5xl">GWANGGAETO</p>
+          <p className="neon-en text-3xl md:text-5xl">
+            GWANGGAETO<sup className="ml-[0.04em] text-[0.28em] font-semibold tracking-normal">™</sup>
+          </p>
 
           <p
             className={`mx-auto max-w-2xl text-lg tracking-[0.12em] text-amber-100/95 md:text-2xl ${locale === "ko" ? "teaser-tagline-ko" : "teaser-i18n"}`}

@@ -19,5 +19,5 @@ export default async function HangeulJamoModulePage({
 }) {
   const { module } = await params;
   if (!isJamoHangeulModule(module)) notFound();
-  return <JamoAppFrame />;
+  return <JamoAppFrame module={module} />;
 }

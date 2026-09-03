@@ -1,7 +1,9 @@
 "use client"
 
 import { useTranslations } from "next-intl"
+import BrandMark from "@/components/BrandMark"
 import LocaleToggle from "@/components/LocaleToggle"
+import PatentPendingNotice from "@/components/PatentPendingNotice"
 
 function HomeLink() {
   const thh = useTranslations("header")
@@ -67,6 +69,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
     },
   ]
 
+  // 자모앱(gwanggaeto-app)은 /hangeul 경로로 붙인다. 홈 껍데기는 그대로 둔다.
   const hangeulButtons = [
     { id: "vowels", koKey: "learnVowels", href: "/hangeul/vowels" },
     { id: "consonants", koKey: "learnConsonants", href: "/hangeul/consonants" },
@@ -162,9 +165,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
           <div className="text-stone-200 text-xs tracking-[0.4em] uppercase">
             Onmaeum Korean
           </div>
-          <div className="text-3xl md:text-5xl font-black tracking-[0.2em] text-white">
-            GWANGGAETO
-          </div>
+          <BrandMark className="block text-3xl md:text-5xl font-black tracking-[0.2em] text-white" />
         </a>
       </header>
 
@@ -426,8 +427,9 @@ export default function GwanggaetoCinematicLobbyHomepage() {
 
       {/* Footer */}
       <footer className="relative z-10 border-t border-white/10 bg-black/80 px-6 py-10 text-center text-stone-400">
-        <div className="text-white font-black tracking-[0.25em] text-2xl mb-3">GWANGGAETO</div>
+        <BrandMark className="mb-3 block text-2xl font-black tracking-[0.25em] text-white" />
         <div>Onmaeum Korean · Korean Education AI Research & Development Institute</div>
+        <PatentPendingNotice className="mt-3 text-xs tracking-normal text-stone-500" />
       </footer>
 
       {/* Floating Seal → 광개토약방 */}

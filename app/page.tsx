@@ -364,9 +364,9 @@ export default function GwanggaetoCinematicLobbyHomepage() {
             <div className="relative z-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
               {section.buttonKeys.map((buttonKey) => {
                 const externalLinks: Record<string, string> = {
-                  factoryKorean: "https://mtvs283.github.io/onmaeum-kmotors/",
-                  safetyKorean: "https://mtvs283.github.io/onmaeum-kmotors/app/index.html?role=student",
-                  workDialogues: "https://mtvs283.github.io/onmaeum-kmotors/textbook/student.html",
+                  factoryKorean: "https://onmaeum-kmotors.vercel.app/",
+                  safetyKorean: "https://onmaeum-kmotors.vercel.app/app/index.html?role=student",
+                  workDialogues: "https://onmaeum-kmotors.vercel.app/textbook/student.html",
                 }
                 const targetHref = externalLinks[buttonKey] || "#plaza"
                 const isExternal = targetHref.startsWith("http")

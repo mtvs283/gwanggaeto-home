@@ -472,13 +472,11 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       {/* Footer */}
       <footer className="relative z-10 border-t border-white/10 bg-black/80 px-6 py-10 text-center text-stone-400">
         <div className="mb-5 flex justify-center">
-          <div className="inline-flex items-center rounded-xl bg-white px-5 py-2.5">
-            <img
-              src="/images/institute-wordmark.png"
-              alt="한국어교육AI연구개발원 (KLEAI · Korean Language Education AI Institute)"
-              className="h-10 md:h-11 w-auto"
-            />
-          </div>
+          <img
+            src="/images/institute-wordmark-dark.png"
+            alt="한국어교육AI연구개발원 (KLEAI · Korean Language Education AI Institute)"
+            className="h-12 md:h-14 w-auto"
+          />
         </div>
         <BrandMark className="mb-2 block text-2xl font-black tracking-[0.25em] text-white" />
         <div>Onmaeum Korean Campus · KLEAI (Korean Language Education AI Institute)</div>

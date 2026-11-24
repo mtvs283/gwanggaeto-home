@@ -161,11 +161,18 @@ export default function GwanggaetoCinematicLobbyHomepage() {
 
       {/* Navigation (fixed so the logo floats like the corner badges) */}
       <header className="fixed left-0 right-0 top-0 z-40 flex items-center justify-between px-6 md:px-10 py-6">
-        <a href="#top" className="block">
-          <div className="text-stone-200 text-xs tracking-[0.4em] uppercase">
-            Onmaeum Korean
+        <a href="#top" className="flex items-center gap-3.5 group">
+          <img
+            src="/images/onmaeum-emblem.jpg"
+            alt="ONMAEUM AI Emblem"
+            className="h-12 w-12 md:h-14 md:w-14 rounded-xl border border-yellow-400/60 bg-black object-cover shadow-lg shadow-yellow-500/20 transition duration-300 group-hover:scale-105"
+          />
+          <div>
+            <div className="text-stone-200 text-xs tracking-[0.36em] uppercase">
+              Onmaeum Korean Campus
+            </div>
+            <BrandMark className="block text-3xl md:text-5xl font-black tracking-[0.2em] text-white" />
           </div>
-          <BrandMark className="block text-3xl md:text-5xl font-black tracking-[0.2em] text-white" />
         </a>
       </header>
 
@@ -331,16 +338,29 @@ export default function GwanggaetoCinematicLobbyHomepage() {
               </div>
 
               <div className="grid sm:grid-cols-2 gap-4">
-                {section.buttonKeys.map((buttonKey) => (
-                  <a
-                    key={buttonKey}
-                    href="#plaza"
-                    className="rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition duration-300 p-6 text-lg font-bold"
-                  >
-                    {th(buttonKey)}
-                    <span className="block mt-6 text-yellow-300">{th("enter")} →</span>
-                  </a>
-                ))}
+                {section.buttonKeys.map((buttonKey) => {
+                  const externalLinks: Record<string, string> = {
+                    factoryKorean: "https://mtvs283.github.io/onmaeum-kmotors/",
+                    safetyKorean: "https://mtvs283.github.io/onmaeum-kmotors/app/index.html?role=student",
+                    workDialogues: "https://mtvs283.github.io/onmaeum-kmotors/textbook/student.html",
+                  }
+                  const targetHref = externalLinks[buttonKey] || "#plaza"
+                  const isExternal = targetHref.startsWith("http")
+                  return (
+                    <a
+                      key={buttonKey}
+                      href={targetHref}
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noopener noreferrer" : undefined}
+                      className="rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-yellow-300/40 transition duration-300 p-6 text-lg font-bold"
+                    >
+                      {th(buttonKey)}
+                      <span className="block mt-6 text-yellow-300">
+                        {isExternal ? "GWANGGAETO K-Motors · " : ""}{th("enter")} →
+                      </span>
+                    </a>
+                  )
+                })}
               </div>
             </div>
           </div>
@@ -427,8 +447,17 @@ export default function GwanggaetoCinematicLobbyHomepage() {
 
       {/* Footer */}
       <footer className="relative z-10 border-t border-white/10 bg-black/80 px-6 py-10 text-center text-stone-400">
-        <BrandMark className="mb-3 block text-2xl font-black tracking-[0.25em] text-white" />
-        <div>Onmaeum Korean · Korean Education AI Research & Development Institute</div>
+        <div className="mb-5 flex justify-center">
+          <div className="inline-flex items-center rounded-xl border border-yellow-500/30 bg-white px-5 py-2.5 shadow-lg shadow-black/40">
+            <img
+              src="/images/institute-wordmark.png"
+              alt="한국어교육AI연구개발원 (KLEAI · Korean Language Education AI Institute)"
+              className="h-10 md:h-11 w-auto"
+            />
+          </div>
+        </div>
+        <BrandMark className="mb-2 block text-2xl font-black tracking-[0.25em] text-white" />
+        <div>Onmaeum Korean Campus · KLEAI (Korean Language Education AI Institute)</div>
         <PatentPendingNotice className="mt-3 text-xs tracking-normal text-stone-500" />
       </footer>
 

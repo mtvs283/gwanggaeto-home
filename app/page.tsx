@@ -165,7 +165,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
           <img
             src="/images/onmaeum-emblem.jpg"
             alt="ONMAEUM AI Emblem"
-            className="h-12 w-12 md:h-14 md:w-14 rounded-xl border border-yellow-400/60 bg-black object-cover shadow-lg shadow-yellow-500/20 transition duration-300 group-hover:scale-105"
+            className="h-12 w-12 md:h-14 md:w-14 rounded-xl bg-black object-cover transition duration-300 group-hover:scale-105"
           />
           <div>
             <div className="text-stone-200 text-xs tracking-[0.36em] uppercase">
@@ -448,7 +448,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       {/* Footer */}
       <footer className="relative z-10 border-t border-white/10 bg-black/80 px-6 py-10 text-center text-stone-400">
         <div className="mb-5 flex justify-center">
-          <div className="inline-flex items-center rounded-xl border border-yellow-500/30 bg-white px-5 py-2.5 shadow-lg shadow-black/40">
+          <div className="inline-flex items-center rounded-xl bg-white px-5 py-2.5">
             <img
               src="/images/institute-wordmark.png"
               alt="한국어교육AI연구개발원 (KLEAI · Korean Language Education AI Institute)"

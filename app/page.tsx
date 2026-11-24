@@ -95,7 +95,12 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       koTitleKey: "studyAbroadKorean",
       koDescKey: "schoolKoreanDesc",
       buttonKeys: ["studyCampusLife", "schoolNotices", "presentationKorean", "studyGuides"],
-      color: "border-blue-300/20 bg-blue-950/20",
+      watermark: "유학",
+      watermarkClass: "text-blue-300/5",
+      borderTop: "border-blue-300/10",
+      eyebrowClass: "text-blue-200",
+      cardClass: "border-blue-300/20 bg-blue-950/20",
+      btnClass: "border-blue-300/20 bg-blue-300/10 hover:bg-blue-300 hover:text-black",
     },
     {
       id: "work",
@@ -104,7 +109,12 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       koTitleKey: "workKorean",
       koDescKey: "workKoreanDesc",
       buttonKeys: ["factoryKorean", "safetyKorean", "workDialogues", "epsPractice"],
-      color: "border-red-300/20 bg-red-950/20",
+      watermark: "일터",
+      watermarkClass: "text-red-300/5",
+      borderTop: "border-red-300/10",
+      eyebrowClass: "text-red-200",
+      cardClass: "border-red-300/20 bg-red-950/20",
+      btnClass: "border-red-300/20 bg-red-300/10 hover:bg-red-300 hover:text-black",
     },
     {
       id: "daily",
@@ -113,7 +123,12 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       koTitleKey: "dailyKorean",
       koDescKey: "dailyKoreanDesc",
       buttonKeys: ["conversationPractice", "rolePlay", "listeningPractice", "wordCards"],
-      color: "border-stone-300/20 bg-stone-900/40",
+      watermark: "생활",
+      watermarkClass: "text-stone-300/5",
+      borderTop: "border-stone-300/10",
+      eyebrowClass: "text-stone-300",
+      cardClass: "border-stone-300/20 bg-stone-900/40",
+      btnClass: "border-stone-300/20 bg-white/5 hover:bg-stone-200 hover:text-black",
     },
     {
       id: "travel",
@@ -122,7 +137,12 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       koTitleKey: "travelKorean",
       koDescKey: "travelKoreanDesc",
       buttonKeys: ["taxiKorean", "restaurantKorean", "shoppingKorean", "transportationKorean"],
-      color: "border-emerald-300/20 bg-emerald-950/20",
+      watermark: "여행",
+      watermarkClass: "text-emerald-300/5",
+      borderTop: "border-emerald-300/10",
+      eyebrowClass: "text-emerald-200",
+      cardClass: "border-emerald-300/20 bg-emerald-950/20",
+      btnClass: "border-emerald-300/20 bg-emerald-300/10 hover:bg-emerald-300 hover:text-black",
     },
   ]
 
@@ -281,7 +301,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
 
       {/* Hangeul Section */}
       <section id="hangeul" className="relative z-10 min-h-screen border-t border-yellow-300/10 bg-black px-6 py-12 flex items-center scroll-mt-0">
-        <div className="relative max-w-7xl mx-auto rounded-[2rem] border border-yellow-300/20 bg-black/60 backdrop-blur-xl p-6 md:p-8 overflow-hidden">
+        <div className="relative w-full max-w-7xl mx-auto rounded-[2rem] border border-yellow-300/20 bg-black/60 backdrop-blur-xl p-6 md:p-8 overflow-hidden">
           <div className="relative z-20 mb-5 flex justify-end">
             <HomeLink />
           </div>
@@ -313,63 +333,68 @@ export default function GwanggaetoCinematicLobbyHomepage() {
         </div>
       </section>
 
-      {/* Main Learning Sections */}
+      {/* Main Learning Sections — 1번 한글 섹션과 동일한 풀스크린 중앙 카드 규격 */}
       {learningSections.map((section) => (
-        <section key={section.id} id={section.id} className="relative z-10 border-t border-white/10 bg-black px-6 py-16 scroll-mt-10">
-          <div className={`max-w-7xl mx-auto rounded-[2.5rem] border ${section.color} backdrop-blur-xl p-8 md:p-12`}>
-            <div className="mb-8 flex justify-end">
+        <section
+          key={section.id}
+          id={section.id}
+          className={`relative z-10 min-h-screen border-t ${section.borderTop} bg-black px-6 py-12 flex items-center scroll-mt-0`}
+        >
+          <div className={`relative w-full max-w-7xl mx-auto rounded-[2rem] border ${section.cardClass} backdrop-blur-xl p-6 md:p-8 overflow-hidden`}>
+            <div className="relative z-20 mb-5 flex justify-end">
               <HomeLink />
             </div>
 
-            <div className="grid lg:grid-cols-[1fr_1.2fr] gap-10 items-center">
-              <div>
-                <div className="text-yellow-200 text-sm tracking-[0.3em] uppercase mb-4">
-                  {thh(section.eyebrowKey)}
-                </div>
-                <h2 className="text-4xl md:text-6xl font-black mb-4">
-                  {thh(section.titleKey)}
-                </h2>
-                <div className="text-2xl text-yellow-200 font-bold mb-6">
-                  {th(section.koTitleKey)}
-                </div>
-                <p className="text-stone-200 leading-relaxed">
-                  {th(section.koDescKey)}
-                </p>
-              </div>
+            <div className={`absolute right-8 top-8 text-[10rem] md:text-[16rem] font-black ${section.watermarkClass} leading-none pointer-events-none`}>
+              {section.watermark}
+            </div>
 
-              <div className="grid sm:grid-cols-2 gap-4">
-                {section.buttonKeys.map((buttonKey) => {
-                  const externalLinks: Record<string, string> = {
-                    factoryKorean: "https://mtvs283.github.io/onmaeum-kmotors/",
-                    safetyKorean: "https://mtvs283.github.io/onmaeum-kmotors/app/index.html?role=student",
-                    workDialogues: "https://mtvs283.github.io/onmaeum-kmotors/textbook/student.html",
-                  }
-                  const targetHref = externalLinks[buttonKey] || "#plaza"
-                  const isExternal = targetHref.startsWith("http")
-                  return (
-                    <a
-                      key={buttonKey}
-                      href={targetHref}
-                      target={isExternal ? "_blank" : undefined}
-                      rel={isExternal ? "noopener noreferrer" : undefined}
-                      className="rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-yellow-300/40 transition duration-300 p-6 text-lg font-bold"
-                    >
-                      {th(buttonKey)}
-                      <span className="block mt-6 text-yellow-300">
-                        {isExternal ? "GWANGGAETO K-Motors · " : ""}{th("enter")} →
-                      </span>
-                    </a>
-                  )
-                })}
+            <div className="relative z-10 max-w-3xl">
+              <div className={`${section.eyebrowClass} text-sm tracking-[0.3em] uppercase mb-3`}>
+                {thh(section.eyebrowKey)}
               </div>
+              <h2 className="text-4xl md:text-5xl font-black mb-3">
+                {thh(section.titleKey)}
+              </h2>
+              <p className="text-stone-300 text-base md:text-lg leading-relaxed">
+                {th(section.koDescKey)}
+              </p>
+            </div>
+
+            <div className="relative z-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+              {section.buttonKeys.map((buttonKey) => {
+                const externalLinks: Record<string, string> = {
+                  factoryKorean: "https://mtvs283.github.io/onmaeum-kmotors/",
+                  safetyKorean: "https://mtvs283.github.io/onmaeum-kmotors/app/index.html?role=student",
+                  workDialogues: "https://mtvs283.github.io/onmaeum-kmotors/textbook/student.html",
+                }
+                const targetHref = externalLinks[buttonKey] || "#plaza"
+                const isExternal = targetHref.startsWith("http")
+                return (
+                  <a
+                    key={buttonKey}
+                    href={targetHref}
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noopener noreferrer" : undefined}
+                    className={`rounded-2xl border ${section.btnClass} transition duration-300 p-5 min-h-28 flex flex-col justify-between`}
+                  >
+                    <span className="text-lg font-bold">{th(buttonKey)}</span>
+                    {isExternal && (
+                      <span className="mt-3 text-xs font-bold tracking-wider uppercase opacity-80">
+                        GWANGGAETO K-Motors →
+                      </span>
+                    )}
+                  </a>
+                )
+              })}
             </div>
           </div>
         </section>
       ))}
 
       {/* Learning Plaza Section */}
-      <section id="plaza" className="relative z-10 min-h-screen border-t border-purple-300/10 bg-black px-6 py-12 flex items-center scroll-mt-10">
-        <div className="relative max-w-7xl mx-auto rounded-[2rem] border border-purple-300/20 bg-purple-950/20 backdrop-blur-xl p-6 md:p-8 overflow-hidden">
+      <section id="plaza" className="relative z-10 min-h-screen border-t border-purple-300/10 bg-black px-6 py-12 flex items-center scroll-mt-0">
+        <div className="relative w-full max-w-7xl mx-auto rounded-[2rem] border border-purple-300/20 bg-purple-950/20 backdrop-blur-xl p-6 md:p-8 overflow-hidden">
           <div className="relative z-20 mb-5 flex justify-end">
             <HomeLink />
           </div>
@@ -379,16 +404,13 @@ export default function GwanggaetoCinematicLobbyHomepage() {
           </div>
 
           <div className="relative z-10 max-w-4xl">
-            <div className="text-purple-200 text-sm tracking-[0.3em] uppercase mb-4">
+            <div className="text-purple-200 text-sm tracking-[0.3em] uppercase mb-3">
               {thh("learningPlaza")}
             </div>
-            <h2 className="text-4xl md:text-5xl font-black mb-4">
+            <h2 className="text-4xl md:text-5xl font-black mb-3">
               {thh("plazaTitle")}
             </h2>
-            <p className="text-xl text-stone-200 leading-relaxed mb-4">
-              {th("plazaItems")}
-            </p>
-            <p className="text-stone-300 leading-relaxed">
+            <p className="text-stone-300 text-base md:text-lg leading-relaxed">
               {th("plazaDesc")}
             </p>
           </div>
@@ -400,7 +422,7 @@ export default function GwanggaetoCinematicLobbyHomepage() {
                 href={item.href}
                 className="rounded-2xl border border-purple-300/20 bg-white/5 hover:bg-purple-300 hover:text-black transition duration-300 p-5 min-h-28 flex flex-col justify-between"
               >
-                <span className="text-xl font-bold">{th(item.koKey)}</span>
+                <span className="text-lg font-bold">{th(item.koKey)}</span>
               </a>
             ))}
           </div>
@@ -408,39 +430,41 @@ export default function GwanggaetoCinematicLobbyHomepage() {
       </section>
 
       {/* Teachers & Institutions Section */}
-      <section id="teachers" className="relative z-10 border-t border-white/10 bg-black px-6 pt-10 pb-32 scroll-mt-10">
-        <div className="max-w-7xl mx-auto rounded-[2.5rem] border border-white/10 bg-black/60 backdrop-blur-xl p-8 md:p-12">
-          <div className="mb-8 flex justify-end">
+      <section id="teachers" className="relative z-10 min-h-screen border-t border-yellow-300/10 bg-black px-6 py-12 flex items-center scroll-mt-0">
+        <div className="relative w-full max-w-7xl mx-auto rounded-[2rem] border border-yellow-300/20 bg-black/60 backdrop-blur-xl p-6 md:p-8 overflow-hidden">
+          <div className="relative z-20 mb-5 flex justify-end">
             <HomeLink />
           </div>
 
-          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
-            <div>
-              <div className="text-yellow-200 text-sm tracking-[0.3em] uppercase mb-4">
-                {thh("teachersEyebrow")}
-              </div>
-              <h2 className="text-4xl md:text-6xl font-black mb-6">
-                {thh("teachersTitle")}
-              </h2>
-              <p className="text-xl text-stone-200 leading-relaxed mb-4">
-                {th("aiInstituteSection")}
-              </p>
-              <p className="text-stone-300 leading-relaxed">
-                {th("aiInstituteDesc")}
-              </p>
-            </div>
+          <div className="absolute right-8 top-8 text-[8rem] md:text-[13rem] font-black text-yellow-300/5 leading-none pointer-events-none">
+            KLEAI
+          </div>
 
-            <div className="grid gap-4">
-              <a href="/teachers" className="rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition duration-300 p-6 font-bold">
-                {th("teacherPortal")} →
-              </a>
-              <a href="/institutions" className="rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition duration-300 p-6 font-bold">
-                {th("institutionPartnership")} →
-              </a>
-              <a href="/license" className="rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition duration-300 p-6 font-bold">
-                {th("licenseInquiry")} →
-              </a>
+          <div className="relative z-10 max-w-3xl">
+            <div className="text-yellow-200 text-sm tracking-[0.3em] uppercase mb-3">
+              {thh("teachersEyebrow")}
             </div>
+            <h2 className="text-4xl md:text-5xl font-black mb-3">
+              {thh("teachersTitle")}
+            </h2>
+            <p className="text-stone-300 text-base md:text-lg leading-relaxed">
+              {th("aiInstituteDesc")}
+            </p>
+          </div>
+
+          <div className="relative z-10 grid sm:grid-cols-3 gap-4 mt-8">
+            <a href="/teachers" className="rounded-2xl border border-yellow-300/20 bg-yellow-300/10 hover:bg-yellow-300 hover:text-black transition duration-300 p-5 min-h-28 flex flex-col justify-between">
+              <span className="text-lg font-bold">{th("teacherPortal")}</span>
+              <span className="mt-3 text-xs font-bold uppercase opacity-80">Enter →</span>
+            </a>
+            <a href="/institutions" className="rounded-2xl border border-yellow-300/20 bg-yellow-300/10 hover:bg-yellow-300 hover:text-black transition duration-300 p-5 min-h-28 flex flex-col justify-between">
+              <span className="text-lg font-bold">{th("institutionPartnership")}</span>
+              <span className="mt-3 text-xs font-bold uppercase opacity-80">Enter →</span>
+            </a>
+            <a href="/license" className="rounded-2xl border border-yellow-300/20 bg-yellow-300/10 hover:bg-yellow-300 hover:text-black transition duration-300 p-5 min-h-28 flex flex-col justify-between">
+              <span className="text-lg font-bold">{th("licenseInquiry")}</span>
+              <span className="mt-3 text-xs font-bold uppercase opacity-80">Enter →</span>
+            </a>
           </div>
         </div>
       </section>
